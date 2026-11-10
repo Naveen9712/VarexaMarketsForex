@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Varexa Markets | Forex &amp; CFD Trading</title>
+  <meta name="description" content="Trade forex, metals, energies, indices and stock CFDs on MetaTrader 5." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <meta name="theme-color" content="#0B1F1A" />
+  <link rel="stylesheet" href="style.css?v=3" />
+</head>
+<body>
+
+  <!-- Risk warning bar (wording to be supplied by the client's compliance team) -->
+  <div class="risk-bar" role="note">
+    <div class="container">
+      <p><strong>Risk warning:</strong> CFDs are complex instruments and carry a high risk of losing money rapidly due to leverage. Final wording to be provided by compliance.</p>
+    </div>
+  </div>
+
+  <!-- ===================== A. HEADER ===================== -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="logo" aria-label="Varexa Markets home">
+        <img class="logo-mark" src="assets/varexa-mark.png" width="52" height="34" alt="" />
+        <span class="logo-text">Varexa<small>Markets</small></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main">
+        <ul>
+          <li><a href="#top" class="is-active">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#advantages">Our Advantages</a></li>
+          <li><a href="#markets">Markets</a></li>
+          <li><a href="#platforms">Trading Platforms</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#news">News</a></li>
+        </ul>
+        <div class="nav-actions-mobile">
+          <a href="#contact" class="btn btn-ghost-light">Log in</a>
+          <a href="#contact" class="btn btn-gold">Sign up</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#contact" class="btn btn-ghost-light btn-sm">Log in</a>
+        <a href="#contact" class="btn btn-gold btn-sm">Sign up</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================== B. HERO ===================== -->
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="hero-kicker"><span class="dot-live" aria-hidden="true"></span> Forex and CFD trading on MT5</p>
+          <h1>Trade the world's markets with <span class="text-gold">confidence.</span></h1>
+          <p class="hero-lead">Access forex pairs, gold, silver, energies, global indices and stock CFDs from a single trading account, with tools and support built for every level of trader.</p>
+          <div class="hero-ctas">
+            <a href="#contact" class="btn btn-gold btn-lg">Open account</a>
+            <a href="#market-overview" class="btn btn-outline-gold btn-lg">Explore markets</a>
+          </div>
+          <ul class="hero-points">
+            <li><i data-lucide="monitor-smartphone"></i> MetaTrader 5</li>
+            <li><i data-lucide="layers"></i> 5 asset classes</li>
+            <li><i data-lucide="headphones"></i> Multilingual support</li>
+          </ul>
+        </div>
+
+        <!-- Hero visual -->
+        <div class="hero-visual">
+          <picture class="hero-media">
+            <source srcset="assets/hero-mt5-app.webp?v=3" type="image/webp" />
+            <img src="assets/hero-mt5-app.png?v=3" width="1000" height="800" fetchpriority="high"
+                 alt="Two smartphones showing the MetaTrader 5 mobile app: the Quotes list with Quotes, Chart, Trade, History and Settings tabs, and an EURUSD H1 chart with buy and sell buttons" />
+          </picture>
+        </div>
+      </div>
+
+      <!-- Ticker tape -->
+      <div class="ticker" aria-label="Sample market ticker">
+        <div class="ticker-track" id="tickerTrack"></div>
+      </div>
+    </section>
+
+    <!-- ===================== C. LIVE MARKET OVERVIEW ===================== -->
+    <section class="section section-paper" id="market-overview">
+      <div class="container">
+        <div class="section-head split">
+          <div>
+            <h2>Market overview</h2>
+            <p class="section-sub">Prices across forex, metals, energies, indices and stock CFDs. Values shown here are sample data for the design prototype and update with simulated movement.</p>
+          </div>
+          <span class="badge-sample"><span class="dot-live" aria-hidden="true"></span> Sample data, not live prices</span>
+        </div>
+
+        <!-- Featured instrument cards -->
+        <div class="mover-grid" id="moverGrid"></div>
+
+        <!-- Instrument table -->
+        <div class="market-panel">
+          <div class="market-tabs" role="tablist" aria-label="Asset class">
+            <button role="tab" class="mtab is-active" data-filter="all" aria-selected="true">All</button>
+            <button role="tab" class="mtab" data-filter="forex" aria-selected="false">Forex</button>
+            <button role="tab" class="mtab" data-filter="metals" aria-selected="false">Metals</button>
+            <button role="tab" class="mtab" data-filter="energy" aria-selected="false">Energies</button>
+            <button role="tab" class="mtab" data-filter="indices" aria-selected="false">Indices</button>
+            <button role="tab" class="mtab" data-filter="stocks" aria-selected="false">Stock CFDs</button>
+          </div>
+          <div class="table-wrap">
+            <table class="market-table">
+              <thead>
+                <tr>
+                  <th scope="col">Instrument</th>
+                  <th scope="col" class="num">Sell</th>
+                  <th scope="col" class="num">Buy</th>
+                  <th scope="col" class="num">Change</th>
+                  <th scope="col" class="hide-sm">Today</th>
+                </tr>
+              </thead>
+              <tbody id="marketBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== D. TRADING ESSENTIALS (static) ===================== -->
+    <section class="section section-ink" id="trading-essentials" aria-labelledby="essentials-title">
+      <div class="container">
+        <div class="section-head split">
+          <div>
+            <h2 id="essentials-title">Know how a trade works before you place one</h2>
+            <p class="section-sub">The core ideas behind forex and CFD trading, explained in plain language. Understanding them is the first step to managing risk.</p>
+          </div>
+          <a href="#education" class="btn btn-outline-gold">Visit the learning centre</a>
+        </div>
+
+        <div class="essentials-grid">
+          <!-- Worked example: static, illustrative figures only -->
+          <article class="example-card">
+            <header class="example-head">
+              <span class="example-tag">Worked example</span>
+              <h3>A buy position on EUR/USD</h3>
+              <p>How price levels, position size and pip value fit together.</p>
+            </header>
+            <dl class="example-rows">
+              <div><dt>Market</dt><dd>EUR/USD</dd></div>
+              <div><dt>Direction</dt><dd class="up">Buy (long)</dd></div>
+              <div><dt>Position size</dt><dd>0.10 lot</dd></div>
+              <div><dt>Value of 1 pip</dt><dd>$1.00</dd></div>
+              <div><dt>Entry price</dt><dd>1.0860</dd></div>
+              <div><dt>Stop-loss</dt><dd class="down">1.0830 <small>30 pips</small></dd></div>
+              <div><dt>Take-profit</dt><dd class="up">1.0920 <small>60 pips</small></dd></div>
+            </dl>
+            <div class="example-outcomes">
+              <div class="outcome outcome-loss"><span>If the stop-loss is hit</span><strong>&minus;$30</strong></div>
+              <div class="outcome outcome-gain"><span>If the take-profit is hit</span><strong>+$60</strong></div>
+            </div>
+            <p class="example-note">Illustrative figures for a USD account. Excludes spread, commission and overnight swap. Not a trade recommendation.</p>
+          </article>
+
+          <div class="concept-grid">
+            <article class="concept-card">
+              <span class="concept-icon"><i data-lucide="arrow-up-down"></i></span>
+              <h3>Go long or short</h3>
+              <p>A CFD lets you take a position on a price rising (buy) or falling (sell) without owning the underlying asset.</p>
+            </article>
+            <article class="concept-card">
+              <span class="concept-icon"><i data-lucide="scale"></i></span>
+              <h3>Leverage and margin</h3>
+              <p>Margin is the deposit needed to open a leveraged position. Leverage magnifies losses just as much as gains.</p>
+            </article>
+            <article class="concept-card">
+              <span class="concept-icon"><i data-lucide="receipt"></i></span>
+              <h3>Spreads and costs</h3>
+              <p>The spread is the gap between the buy and sell price. Some accounts also charge commission, and positions held overnight may incur swap.</p>
+            </article>
+            <article class="concept-card">
+              <span class="concept-icon"><i data-lucide="ruler"></i></span>
+              <h3>Pips and lot sizes</h3>
+              <p>A pip is a small standard unit of price movement. Your lot size decides how much each pip is worth to you.</p>
+            </article>
+            <article class="concept-card">
+              <span class="concept-icon"><i data-lucide="clock-3"></i></span>
+              <h3>Market hours</h3>
+              <p>Forex trades 24 hours a day, five days a week. Metals, energies, indices and shares follow their own sessions.</p>
+            </article>
+            <article class="concept-card">
+              <span class="concept-icon"><i data-lucide="shield-check"></i></span>
+              <h3>Risk management tools</h3>
+              <p>Stop-loss and take-profit orders close a position at levels you set. A standard stop-loss can fill at a worse price in fast markets.</p>
+            </article>
+          </div>
+        </div>
+
+        <p class="essentials-risk"><i data-lucide="info"></i> Leveraged products carry a high level of risk and may not be suitable for everyone. Make sure you understand how they work before you trade.</p>
+      </div>
+    </section>
+
+    <!-- ===================== E. COMPANY OVERVIEW ===================== -->
+    <section class="section section-ink" id="about">
+      <div class="container about-grid">
+        <div class="about-visual" aria-hidden="true">
+          <div class="about-card about-card-main">
+            <div class="ac-head"><span class="sym-badge sym-fx">£$</span><div><strong>GBP/USD</strong><span>Sample</span></div></div>
+            <svg class="ac-spark" viewBox="0 0 300 110" preserveAspectRatio="none" id="aboutSpark"></svg>
+            <div class="ac-foot"><span>1.2934</span><span class="up">+0.36%</span></div>
+          </div>
+          <div class="about-card about-card-small">
+            <i data-lucide="globe-2"></i>
+            <strong>Global markets</strong>
+            <span>Forex, commodities, indices and stocks</span>
+          </div>
+          <div class="about-card about-card-tag">
+            <i data-lucide="clock-3"></i>
+            <span>Forex trades 24 hours, 5 days a week</span>
+          </div>
+        </div>
+
+        <div class="about-copy">
+          <h2>A brokerage built around the trader</h2>
+          <p>Varexa Markets gives retail and professional traders access to global financial markets through the MetaTrader 5 platform. [Company introduction to be supplied by the client: history, regulatory status and head office.]</p>
+          <ul class="tick-list">
+            <li><i data-lucide="check"></i> Forex, metals, energies, indices and stock CFDs</li>
+            <li><i data-lucide="check"></i> MetaTrader 5 on desktop, web and mobile</li>
+            <li><i data-lucide="check"></i> Copy trading, PAMM, funded accounts and partner programmes</li>
+          </ul>
+          <a href="#about" class="btn btn-outline-gold">About us</a>
+        </div>
+      </div>
+
+      <div class="container">
+        <ul class="facts">
+          <li><strong>5</strong><span>Asset classes</span></li>
+          <li><strong>MT5</strong><span>Trading platform</span></li>
+          <li><strong>24/5</strong><span>Forex market access</span></li>
+          <li><strong>4</strong><span>Trading services</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== F. OUR ADVANTAGES ===================== -->
+    <section class="section section-paper" id="advantages">
+      <div class="container">
+        <div class="section-head center">
+          <h2>Why traders choose us</h2>
+          <p class="section-sub">What clients get when they trade with Varexa Markets. Specific figures such as spreads and leverage will be added once confirmed by the client.</p>
+        </div>
+        <div class="adv-grid">
+          <article class="adv-card adv-feature">
+            <i data-lucide="badge-percent"></i>
+            <h3>Competitive trading conditions</h3>
+            <p>Transparent pricing across account types, with spreads and commissions published on each instrument page.</p>
+            <a href="#contact" class="link">Compare accounts</a>
+          </article>
+          <article class="adv-card">
+            <i data-lucide="globe"></i>
+            <h3>Broad market access</h3>
+            <p>Trade currencies, precious metals, energies, indices and stock CFDs from one account.</p>
+          </article>
+          <article class="adv-card">
+            <i data-lucide="monitor-smartphone"></i>
+            <h3>Trusted platform</h3>
+            <p>MetaTrader 5 on Windows, macOS, web, iOS and Android.</p>
+          </article>
+          <article class="adv-card">
+            <i data-lucide="headphones"></i>
+            <h3>Responsive support</h3>
+            <p>Reach the support team by live chat, email or phone during market hours.</p>
+          </article>
+          <article class="adv-card">
+            <i data-lucide="lock-keyhole"></i>
+            <h3>Security and transparency</h3>
+            <p>Clear terms, published policies and secure client area access.</p>
+          </article>
+          <article class="adv-card">
+            <i data-lucide="graduation-cap"></i>
+            <h3>Learning resources</h3>
+            <p>Videos, guides and market analysis for beginners and experienced traders.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== G. MARKETS ===================== -->
+    <section class="section section-white" id="markets">
+      <div class="container">
+        <div class="section-head split">
+          <div>
+            <h2>Markets you can trade</h2>
+            <p class="section-sub">Four asset classes, each with its own instrument list, trading hours and contract specifications.</p>
+          </div>
+          <a href="#market-overview" class="btn btn-dark">See all prices</a>
+        </div>
+        <div class="markets-grid">
+          <article class="market-card">
+            <div class="mc-icon"><i data-lucide="arrow-left-right"></i></div>
+            <h3>Forex</h3>
+            <p>Major, minor and exotic currency pairs in the world's most traded market.</p>
+            <ul class="mc-tags"><li>EUR/USD</li><li>GBP/USD</li><li>USD/JPY</li></ul>
+            <a href="#market-overview" class="btn btn-outline-dark btn-sm" data-goto="forex">Explore forex</a>
+          </article>
+          <article class="market-card">
+            <div class="mc-icon"><i data-lucide="gem"></i></div>
+            <h3>Commodities</h3>
+            <p>Gold, silver and energies such as crude oil, traded as CFDs.</p>
+            <ul class="mc-tags"><li>XAU/USD</li><li>XAG/USD</li><li>WTI</li></ul>
+            <a href="#market-overview" class="btn btn-outline-dark btn-sm" data-goto="metals">Explore commodities</a>
+          </article>
+          <article class="market-card">
+            <div class="mc-icon"><i data-lucide="bar-chart-3"></i></div>
+            <h3>Indices</h3>
+            <p>Take a view on whole economies through major global stock indices.</p>
+            <ul class="mc-tags"><li>US 500</li><li>US Tech 100</li><li>Germany 40</li></ul>
+            <a href="#market-overview" class="btn btn-outline-dark btn-sm" data-goto="indices">Explore indices</a>
+          </article>
+          <article class="market-card">
+            <div class="mc-icon"><i data-lucide="building-2"></i></div>
+            <h3>Stock CFDs</h3>
+            <p>Trade price movements of well-known listed companies without owning the shares.</p>
+            <ul class="mc-tags"><li>Apple</li><li>Tesla</li><li>Nvidia</li></ul>
+            <a href="#market-overview" class="btn btn-outline-dark btn-sm" data-goto="stocks">Explore stock CFDs</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GETTING STARTED (from Stockrypt) ===================== -->
+    <section class="section section-ink section-tight">
+      <div class="container">
+        <div class="section-head center">
+          <h2>Start trading in four steps</h2>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num">1</span>
+            <h3>Register</h3>
+            <p>Create your account in a few minutes.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">2</span>
+            <h3>Verify</h3>
+            <p>Upload your ID and proof of address.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">3</span>
+            <h3>Fund</h3>
+            <p>Deposit using your preferred payment method.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">4</span>
+            <h3>Trade</h3>
+            <p>Download MT5 and place your first trade.</p>
+          </li>
+        </ol>
+        <div class="center"><a href="#contact" class="btn btn-gold btn-lg">Open account</a></div>
+      </div>
+    </section>
+
+    <!-- ===================== H. TRADING PLATFORMS ===================== -->
+    <section class="section section-paper" id="platforms">
+      <div class="container">
+        <div class="section-head center">
+          <h2>Trade on MetaTrader 5</h2>
+          <p class="section-sub">The industry-standard platform, available on every device you use.</p>
+        </div>
+
+        <div class="platform-panel">
+          <picture class="platform-media">
+            <source srcset="assets/platform-mt5-mobile.webp?v=3" type="image/webp" />
+            <img src="assets/platform-mt5-mobile.jpg?v=3" width="1000" height="809" loading="lazy" decoding="async"
+                 alt="MetaTrader 5 mobile app on two phones: the Quotes screen with currency prices, and an AUDCAD chart with Quotes, Chart, Trade, History and Settings tabs" />
+          </picture>
+
+          <div class="platform-copy" id="platformCopy">
+            <h3 id="pfTitle">MetaTrader 5</h3>
+            <p id="pfDesc">A multi-asset platform with more timeframes, more order types and a built-in economic calendar.</p>
+            <ul class="tick-list" id="pfList">
+              <li><i data-lucide="check"></i> 38 built-in indicators and 21 timeframes</li>
+              <li><i data-lucide="check"></i> Depth of market and 6 pending order types</li>
+              <li><i data-lucide="check"></i> Built-in economic calendar and strategy tester</li>
+            </ul>
+            <div class="downloads">
+              <a href="#" class="dl"><i data-lucide="monitor"></i> Windows</a>
+              <a href="#" class="dl"><i data-lucide="laptop"></i> macOS</a>
+              <a href="#" class="dl"><i data-lucide="smartphone"></i> iOS</a>
+              <a href="#" class="dl"><i data-lucide="tablet-smartphone"></i> Android</a>
+              <a href="#" class="dl"><i data-lucide="globe"></i> WebTrader</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== I. TRADING SERVICES ===================== -->
+    <section class="section section-white services-section" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">Trading services</span>
+          <h2 id="services-title">Choose the way you <span class="text-gold">trade</span></h2>
+          <p class="section-sub">Trade on your own, follow experienced traders, manage capital or grow a client network. Pick the service that fits your goals and experience.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="svc-head">
+              <h3>Copy Trading</h3>
+              <span class="svc-icon" aria-hidden="true"><i data-lucide="users"></i></span>
+            </div>
+            <p class="svc-desc">Follow experienced strategy providers and copy their trades automatically into your own account.</p>
+            <ul class="svc-tags" aria-label="Suited to"><li class="svc-tag svc-tag-emerald">Beginners</li><li class="svc-tag svc-tag-gold">Hands-off</li></ul>
+            <ul class="svc-list">
+              <li><i data-lucide="circle-check"></i> Browse strategy providers and their history</li>
+              <li><i data-lucide="circle-check"></i> Set your own allocation and risk limits</li>
+              <li><i data-lucide="circle-check"></i> Pause or stop copying at any time</li>
+              <li><i data-lucide="circle-check"></i> Track every copied trade from your account</li>
+            </ul>
+            <a href="#contact" class="btn btn-gold btn-block svc-btn">Start copy trading</a>
+          </article>
+          <article class="service-card">
+            <div class="svc-head">
+              <h3>PAMM Accounts</h3>
+              <span class="svc-icon" aria-hidden="true"><i data-lucide="pie-chart"></i></span>
+            </div>
+            <p class="svc-desc">Allocate funds to a money manager who trades a pooled account on behalf of investors.</p>
+            <ul class="svc-tags" aria-label="Suited to"><li class="svc-tag svc-tag-emerald">Investors</li><li class="svc-tag svc-tag-gold">Money managers</li></ul>
+            <ul class="svc-list">
+              <li><i data-lucide="circle-check"></i> Invest alongside a professional money manager</li>
+              <li><i data-lucide="circle-check"></i> One pooled account, traded for all investors</li>
+              <li><i data-lucide="circle-check"></i> Regular performance and fee reporting</li>
+              <li><i data-lucide="circle-check"></i> Terms set out in the PAMM agreement</li>
+            </ul>
+            <a href="#contact" class="btn btn-gold btn-block svc-btn">Explore PAMM</a>
+          </article>
+          <article class="service-card">
+            <div class="svc-head">
+              <h3>Funded Accounts</h3>
+              <span class="svc-icon" aria-hidden="true"><i data-lucide="trophy"></i></span>
+            </div>
+            <p class="svc-desc">Prove your strategy in an evaluation, then trade with firm capital once you pass.</p>
+            <ul class="svc-tags" aria-label="Suited to"><li class="svc-tag svc-tag-gold">Experienced</li><li class="svc-tag svc-tag-neutral">Evaluation</li></ul>
+            <ul class="svc-list">
+              <li><i data-lucide="circle-check"></i> Evaluation phase to demonstrate your strategy</li>
+              <li><i data-lucide="circle-check"></i> Trade firm capital after you qualify</li>
+              <li><i data-lucide="circle-check"></i> Clear rules on targets and drawdown</li>
+              <li><i data-lucide="circle-check"></i> Profit split confirmed before you start</li>
+            </ul>
+            <a href="#contact" class="btn btn-gold btn-block svc-btn">Get funded</a>
+          </article>
+          <article class="service-card">
+            <div class="svc-head">
+              <h3>Partner Programmes</h3>
+              <span class="svc-icon" aria-hidden="true"><i data-lucide="handshake"></i></span>
+            </div>
+            <p class="svc-desc">Introducing broker and affiliate programmes for partners who refer new clients.</p>
+            <ul class="svc-tags" aria-label="Suited to"><li class="svc-tag svc-tag-emerald">Introducing brokers</li><li class="svc-tag svc-tag-gold">Affiliates</li></ul>
+            <ul class="svc-list">
+              <li><i data-lucide="circle-check"></i> Refer clients to Varexa Markets</li>
+              <li><i data-lucide="circle-check"></i> Follow referrals in a partner dashboard</li>
+              <li><i data-lucide="circle-check"></i> Marketing materials for your channels</li>
+              <li><i data-lucide="circle-check"></i> Commission structure agreed with our team</li>
+            </ul>
+            <a href="#contact" class="btn btn-gold btn-block svc-btn">Become a partner</a>
+          </article>
+        </div>
+        <p class="services-note">Programme terms, eligibility and fees will be confirmed by Varexa Markets before launch.</p>
+      </div>
+    </section>
+
+    <!-- ===================== J. EDUCATION ===================== -->
+    <section class="section section-paper" id="education">
+      <div class="container">
+        <div class="section-head split">
+          <div>
+            <h2>Learn to trade</h2>
+            <p class="section-sub">Short video lessons for every stage, from your first trade to building a risk plan.</p>
+          </div>
+          <a href="#education" class="btn btn-dark">All lessons</a>
+        </div>
+        <div class="edu-grid">
+          <article class="video-card">
+            <button class="video-thumb vt-1" aria-label="Play: Forex trading fundamentals">
+              <svg class="vt-art" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,80 30,70 55,75 80,50 105,58 130,35 160,42 200,15"/></svg>
+              <span class="play"><i data-lucide="play"></i></span>
+              <span class="duration">12:40</span>
+            </button>
+            <div class="video-meta"><span class="level">Beginner</span></div>
+            <h3>Forex trading fundamentals</h3>
+            <p>Pips, lots and leverage explained in plain terms.</p>
+          </article>
+          <article class="video-card">
+            <button class="video-thumb vt-2" aria-label="Play: Reading candlestick charts">
+              <svg class="vt-art" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><g class="candles"><rect x="20" y="40" width="10" height="30"/><rect x="45" y="30" width="10" height="25"/><rect x="70" y="45" width="10" height="35"/><rect x="95" y="25" width="10" height="30"/><rect x="120" y="20" width="10" height="20"/><rect x="145" y="35" width="10" height="28"/><rect x="170" y="15" width="10" height="25"/></g></svg>
+              <span class="play"><i data-lucide="play"></i></span>
+              <span class="duration">09:15</span>
+            </button>
+            <div class="video-meta"><span class="level">Beginner</span></div>
+            <h3>Reading candlestick charts</h3>
+            <p>How to read price action from open, high, low and close.</p>
+          </article>
+          <article class="video-card">
+            <button class="video-thumb vt-3" aria-label="Play: Weekly market analysis">
+              <svg class="vt-art" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,30 25,40 50,35 75,60 100,55 125,70 150,62 175,80 200,72"/></svg>
+              <span class="play"><i data-lucide="play"></i></span>
+              <span class="duration">18:02</span>
+            </button>
+            <div class="video-meta"><span class="level">Intermediate</span></div>
+            <h3>Weekly market analysis</h3>
+            <p>Key levels and events to watch on gold, oil and the majors.</p>
+          </article>
+          <article class="video-card">
+            <button class="video-thumb vt-4" aria-label="Play: Risk management essentials">
+              <svg class="vt-art" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="35" x2="200" y2="35" class="dash"/><line x1="0" y1="70" x2="200" y2="70" class="dash"/><polyline points="0,55 30,48 60,58 90,44 120,52 150,40 200,50"/></svg>
+              <span class="play"><i data-lucide="play"></i></span>
+              <span class="duration">14:27</span>
+            </button>
+            <div class="video-meta"><span class="level">All levels</span></div>
+            <h3>Risk management essentials</h3>
+            <p>Position sizing, stop losses and protecting your capital.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== K. NEWS ===================== -->
+    <section class="section section-white news-section" id="news" aria-labelledby="news-title">
+      <div class="container">
+        <div class="section-head split">
+          <div>
+            <span class="eyebrow">Market insights</span>
+            <h2 id="news-title">News and market updates</h2>
+            <p class="section-sub">Commentary on gold, forex, stocks and energy, plus company announcements. Sample articles shown for the prototype.</p>
+          </div>
+          <a href="#news" class="btn btn-dark">All news <i data-lucide="arrow-right"></i></a>
+        </div>
+
+        <div class="news-grid">
+          <article class="news-card news-lead">
+            <a href="#news" class="news-media" tabindex="-1" aria-hidden="true">
+              <!-- Photo: Scottsdale Mint / Unsplash (free licence) -->
+              <img src="https://images.unsplash.com/photo-1762463176312-1757d5125c85?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="Gold bars stacked on a dark surface" loading="lazy" decoding="async" width="1200" height="750" />
+              <span class="news-chip news-chip-gold">Gold</span>
+            </a>
+            <div class="news-body">
+              <div class="news-meta"><span class="news-featured">Featured</span><time datetime="2026-11-05">5 Nov 2026</time><span aria-hidden="true">&middot;</span><span>5 min read</span></div>
+              <h3><a href="#news">Gold holds firm as traders weigh central bank signals</a></h3>
+              <p>Interest-rate expectations, the US dollar and safe-haven demand are all pulling on precious metals this week. We look at what is moving XAU/USD and the price levels traders are watching.</p>
+              <p class="news-story">Gold has long been treated as a store of value in uncertain times. When markets expect lower interest rates, the opportunity cost of holding a non-yielding asset falls, which can support prices. When the dollar strengthens, gold often has to work harder.</p>
+              <a href="#news" class="read-more">Read the full analysis <i data-lucide="arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="news-card">
+            <a href="#news" class="news-media" tabindex="-1" aria-hidden="true">
+              <!-- Photo: Immo Wegmann / Unsplash (free licence) -->
+              <img src="https://images.unsplash.com/photo-1758551737979-561178bb5588?auto=format&amp;fit=crop&amp;w=720&amp;q=70" alt="Rolled euro banknotes of several values" loading="lazy" decoding="async" width="720" height="450" />
+              <span class="news-chip news-chip-emerald">Forex</span>
+            </a>
+            <div class="news-body">
+              <div class="news-meta"><time datetime="2026-11-04">4 Nov 2026</time><span aria-hidden="true">&middot;</span><span>4 min read</span></div>
+              <h3><a href="#news">EUR/USD: what this week's data calendar means for the euro</a></h3>
+              <p>Inflation and jobs releases on both sides of the Atlantic could set the tone for the world's most traded currency pair.</p>
+              <a href="#news" class="read-more">Read more <i data-lucide="arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="news-card">
+            <a href="#news" class="news-media" tabindex="-1" aria-hidden="true">
+              <!-- Photo: Korng Sok / Unsplash (free licence) -->
+              <img src="https://images.unsplash.com/photo-1764735904830-28f8826828ca?auto=format&amp;fit=crop&amp;w=720&amp;q=70" alt="Charging bull statue near Wall Street" loading="lazy" decoding="async" width="720" height="450" />
+              <span class="news-chip news-chip-blue">Stocks</span>
+            </a>
+            <div class="news-body">
+              <div class="news-meta"><time datetime="2026-11-03">3 Nov 2026</time><span aria-hidden="true">&middot;</span><span>4 min read</span></div>
+              <h3><a href="#news">Earnings season: what index CFD traders are watching</a></h3>
+              <p>Big-tech results and guidance are steering the US 500 and US Tech 100. How to approach index CFDs around results days.</p>
+              <a href="#news" class="read-more">Read more <i data-lucide="arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="news-card">
+            <a href="#news" class="news-media" tabindex="-1" aria-hidden="true">
+              <!-- Photo: Zbynek Burival / Unsplash (free licence) -->
+              <img src="https://images.unsplash.com/photo-1516199423456-1f1e91b06f25?auto=format&amp;fit=crop&amp;w=720&amp;q=70" alt="Oil pumpjack silhouetted against a red sunset" loading="lazy" decoding="async" width="720" height="450" />
+              <span class="news-chip news-chip-amber">Oil</span>
+            </a>
+            <div class="news-body">
+              <div class="news-meta"><time datetime="2026-10-31">31 Oct 2026</time><span aria-hidden="true">&middot;</span><span>3 min read</span></div>
+              <h3><a href="#news">Oil prices and the week ahead for energy traders</a></h3>
+              <p>Supply decisions, inventory data and demand outlooks: the factors moving WTI and Brent crude this week.</p>
+              <a href="#news" class="read-more">Read more <i data-lucide="arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="news-card">
+            <a href="#news" class="news-media" tabindex="-1" aria-hidden="true">
+              <!-- Photo: Coinstash Australia / Unsplash (free licence) -->
+              <img src="https://images.unsplash.com/photo-1723785735443-16ffd373f398?auto=format&amp;fit=crop&amp;w=720&amp;q=70" alt="Smartphone showing a market chart" loading="lazy" decoding="async" width="720" height="450" />
+              <span class="news-chip news-chip-neutral">Company</span>
+            </a>
+            <div class="news-body">
+              <div class="news-meta"><time datetime="2026-10-29">29 Oct 2026</time><span aria-hidden="true">&middot;</span><span>2 min read</span></div>
+              <h3><a href="#news">Sample announcement: platform update for clients</a></h3>
+              <p>Placeholder for a Varexa Markets company update. Replace with the real announcement before launch.</p>
+              <a href="#news" class="read-more">Read more <i data-lucide="arrow-right"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== L. CALL TO ACTION ===================== -->
+    <section class="cta-section" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-panel">
+          <div class="cta-decor" aria-hidden="true">
+            <svg class="cta-chart" viewBox="0 0 520 300" preserveAspectRatio="xMaxYMax meet">
+              <defs>
+                <linearGradient id="ctaLine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#CFA364" stop-opacity="0"/><stop offset=".35" stop-color="#E3C078"/><stop offset="1" stop-color="#F8E8A8"/></linearGradient>
+                <linearGradient id="ctaArea" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#E3C078" stop-opacity=".28"/><stop offset="1" stop-color="#E3C078" stop-opacity="0"/></linearGradient>
+              </defs>
+              <g class="cta-candles">
+                <line x1="60" y1="190" x2="60" y2="262"/><rect x="52" y="205" width="16" height="44"/>
+                <line x1="110" y1="170" x2="110" y2="250"/><rect x="102" y="182" width="16" height="50" class="dn"/>
+                <line x1="160" y1="160" x2="160" y2="240"/><rect x="152" y="172" width="16" height="48"/>
+                <line x1="210" y1="130" x2="210" y2="215"/><rect x="202" y="142" width="16" height="56"/>
+                <line x1="260" y1="140" x2="260" y2="210"/><rect x="252" y="150" width="16" height="40" class="dn"/>
+                <line x1="310" y1="100" x2="310" y2="185"/><rect x="302" y="112" width="16" height="56"/>
+                <line x1="360" y1="80" x2="360" y2="160"/><rect x="352" y="92" width="16" height="50"/>
+                <line x1="410" y1="88" x2="410" y2="150"/><rect x="402" y="98" width="16" height="36" class="dn"/>
+                <line x1="460" y1="44" x2="460" y2="128"/><rect x="452" y="56" width="16" height="58"/>
+              </g>
+              <path class="cta-area" d="M0 270 C 80 250, 120 230, 170 205 S 260 190, 300 150 S 400 110, 520 40 L 520 300 L 0 300 Z" fill="url(#ctaArea)"/>
+              <path class="cta-line" d="M0 270 C 80 250, 120 230, 170 205 S 260 190, 300 150 S 400 110, 520 40" stroke="url(#ctaLine)"/>
+              <circle class="cta-dot" cx="520" cy="40" r="6"/>
+            </svg>
+          </div>
+          <div class="cta-content">
+            <span class="eyebrow eyebrow-dark"><i data-lucide="sparkles"></i> Get started with Varexa Markets</span>
+            <h2 id="cta-title">Ready to <span class="text-gold">trade?</span></h2>
+            <p>Open a live account in minutes, or practise first with a free demo account on MetaTrader 5.</p>
+            <div class="cta-actions">
+              <a href="#contact" class="btn btn-gold btn-lg">Open live account <i data-lucide="arrow-right"></i></a>
+              <a href="#contact" class="btn btn-outline-gold btn-lg"><i data-lucide="monitor-play"></i> Try a demo</a>
+            </div>
+            <ul class="cta-points">
+              <li><i data-lucide="monitor-smartphone"></i> MT5</li>
+              <li><i data-lucide="layers"></i> Forex, metals, energies, indices &amp; stocks</li>
+              <li><i data-lucide="headphones"></i> Support during market hours</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== M. CONTACT ===================== -->
+    <section class="section section-paper" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <h2>Talk to us</h2>
+          <p class="section-sub">Questions about accounts, platforms or partnerships? Send us a message or start a live chat.</p>
+          <ul class="contact-list">
+            <li><i data-lucide="mail"></i><div><span>Email</span><a href="mailto:support@example.com">support@example.com</a></div></li>
+            <li><i data-lucide="phone"></i><div><span>Phone</span><a href="tel:+000000000">+00 000 000 000</a></div></li>
+            <li><i data-lucide="map-pin"></i><div><span>Office</span><p>Rodney Bay, Gros Islet, Saint Lucia</p></div></li>
+            <li><i data-lucide="clock-3"></i><div><span>Support hours</span><p>[Hours to be confirmed]</p></div></li>
+          </ul>
+          <figure class="map-card">
+            <iframe
+              class="map-frame"
+              title="Map showing Rodney Bay, Gros Islet, Saint Lucia"
+              src="https://maps.google.com/maps?q=14.0722,-60.9498&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
+            <figcaption class="map-label">
+              <i data-lucide="map-pin"></i>
+              <span><strong>Rodney Bay, Gros Islet</strong> Saint Lucia</span>
+            </figcaption>
+          </figure>
+          <div class="chat-card">
+            <i data-lucide="message-circle"></i>
+            <div>
+              <strong>Live chat</strong>
+              <span>Chat with our team during market hours.</span>
+            </div>
+            <button class="btn btn-dark btn-sm" data-open-chat>Start chat</button>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" action="#" method="post" novalidate>
+          <h3>Send a message</h3>
+          <div class="field-row">
+            <label class="field">
+              <span>Full name</span>
+              <input type="text" name="name" autocomplete="name" required />
+              <em class="err">Enter your name.</em>
+            </label>
+            <label class="field">
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required />
+              <em class="err">Enter a valid email address.</em>
+            </label>
+          </div>
+          <label class="field">
+            <span>Phone</span>
+            <input type="tel" name="phone" autocomplete="tel" required />
+            <em class="err">Enter your phone number.</em>
+          </label>
+          <label class="field">
+            <span>Message</span>
+            <textarea name="message" rows="5" required></textarea>
+            <em class="err">Write a short message.</em>
+          </label>
+          <label class="check">
+            <input type="checkbox" name="consent" required />
+            <span>I agree to the <a href="#">Privacy Policy</a>.</span>
+          </label>
+          <button type="submit" class="btn btn-gold btn-lg btn-block">Send message</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== N. FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#top" class="footer-logo" aria-label="Varexa Markets home"><img src="assets/varexa-logo.png" width="190" height="142" alt="Varexa Markets" /></a>
+          <p>[Short company description and registered entity name to be provided by the client.]</p>
+          <ul class="socials">
+            <li><a href="#" aria-label="LinkedIn"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1v5.46h-4v-4.84c0-1.16-.02-2.64-1.61-2.64-1.61 0-1.86 1.26-1.86 2.56v4.92h-3.93v-11Z"/></svg></a></li>
+            <li><a href="#" aria-label="Instagram"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6Zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Zm5-8.95a1.12 1.12 0 1 1 0 2.24 1.12 1.12 0 0 1 0-2.24ZM12 2.5c-2.58 0-2.9.01-3.92.06-3.47.16-5.36 2.08-5.52 5.52C2.51 9.1 2.5 9.42 2.5 12s.01 2.9.06 3.92c.16 3.44 2.05 5.36 5.52 5.52 1.02.05 1.34.06 3.92.06s2.9-.01 3.92-.06c3.44-.16 5.37-2.07 5.52-5.52.05-1.02.06-1.34.06-3.92s-.01-2.9-.06-3.92c-.15-3.43-2.07-5.36-5.52-5.52C14.9 2.51 14.58 2.5 12 2.5Zm0 1.71c2.54 0 2.84.01 3.84.06 2.58.12 3.78 1.34 3.9 3.9.05 1 .06 1.3.06 3.83s-.01 2.84-.06 3.84c-.12 2.55-1.32 3.78-3.9 3.9-1 .04-1.3.05-3.84.05s-2.84-.01-3.84-.05c-2.59-.12-3.78-1.35-3.9-3.9-.05-1-.06-1.3-.06-3.84s.01-2.83.06-3.83c.12-2.56 1.32-3.79 3.9-3.9 1-.05 1.3-.06 3.84-.06Z"/></svg></a></li>
+            <li><a href="#" aria-label="Facebook"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21.5v-8.2h2.75l.41-3.2H13.5V8.06c0-.93.26-1.56 1.59-1.56h1.7V3.64a22.7 22.7 0 0 0-2.47-.13c-2.45 0-4.12 1.5-4.12 4.24v2.36H7.43v3.2h2.77v8.2h3.3Z"/></svg></a></li>
+            <li><a href="#" aria-label="YouTube"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.58 7.19a2.51 2.51 0 0 0-1.77-1.78C18.25 5 12 5 12 5s-6.25 0-7.81.41A2.51 2.51 0 0 0 2.42 7.2C2 8.75 2 12 2 12s0 3.25.42 4.81a2.51 2.51 0 0 0 1.77 1.78C5.75 19 12 19 12 19s6.25 0 7.81-.41a2.51 2.51 0 0 0 1.77-1.78C22 15.25 22 12 22 12s0-3.25-.42-4.81ZM10 15V9l5.2 3L10 15Z"/></svg></a></li>
+            <li><a href="#" aria-label="Telegram"><i data-lucide="send"></i></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About us</a></li>
+            <li><a href="#advantages">Our advantages</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact us</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Markets</h4>
+          <ul>
+            <li><a href="#markets">Forex</a></li>
+            <li><a href="#markets">Commodities</a></li>
+            <li><a href="#markets">Indices</a></li>
+            <li><a href="#markets">Stock CFDs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Trading</h4>
+          <ul>
+            <li><a href="#platforms">MetaTrader 5</a></li>
+            <li><a href="#services">Copy trading</a></li>
+            <li><a href="#services">PAMM accounts</a></li>
+            <li><a href="#services">Funded accounts</a></li>
+            <li><a href="#services">Partners</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li>support@example.com</li>
+            <li>+00 000 000 000</li>
+            <li>[Office address]</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-legal">
+        <ul class="legal-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+          <li><a href="#">Risk Disclosure</a></li>
+          <li><a href="#">AML Policy</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+        <p class="legal-text"><strong>Risk warning:</strong> Trading leveraged products such as forex and CFDs carries a high level of risk and may not be suitable for all investors. You could lose more than your initial investment. [Full risk warning, regulatory details and restricted jurisdictions to be supplied by the client's compliance team.]</p>
+        <p class="copyright">&copy; <span id="year">2026</span> Varexa Markets. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating live chat (placeholder for third-party chat widget) -->
+  <button class="chat-fab" data-open-chat aria-label="Open live chat"><i data-lucide="message-circle"></i></button>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Live chat" hidden>
+    <div class="chat-head">
+      <strong>Live chat</strong>
+      <button class="chat-close" id="chatClose" aria-label="Close chat"><i data-lucide="x"></i></button>
+    </div>
+    <div class="chat-body">
+      <p class="chat-bubble">Hi there. How can we help you today?</p>
+      <p class="chat-hint">Placeholder: the live chat provider's widget (e.g. Tawk.to, LiveChat, Intercom) will load here.</p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@1.50.0/dist/umd/lucide.min.js"></script>
+  <script src="script.js?v=3"></script>
+</body>
+</html>
