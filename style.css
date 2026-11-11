@@ -25,7 +25,7 @@
   --gold-ink: #0E3A2E;     /* CTA text on gold: deep green, ~7:1 contrast */
   --gold-text: #8C6A2E;    /* gold-toned text on light backgrounds */
   --gold-gradient: linear-gradient(135deg, #F8E8A8 0%, #E3C078 48%, #CFA364 100%);
-  --gold-btn: linear-gradient(135deg, #F7E4A3 0%, #E6C47E 38%, #CC9C55 72%, #E2BD78 100%); /* rich gold for CTAs */
+  --gold-btn: linear-gradient(105deg, #C2913F 0%, #E8C474 24%, #FBE7A6 48%, #E3BA67 70%, #B9883A 100%); /* brushed metallic gold for CTAs */
   --btn-fill-dark: #10291F; /* fill behind gold-outline buttons on dark sections */
   --green-solid: linear-gradient(145deg, #1A4A3C 0%, #10362B 100%); /* small solid elements on light backgrounds (reads green, not black) */
   --metal-gold: #E3C078;   /* XAU badge */
@@ -234,6 +234,7 @@ p { margin: 0; }
 .section-tight { padding: 88px 0; }
 .section-paper { background: var(--paper); }
 .section-white { background: var(--surface); }
+.section-pure-white { background: #FFFFFF; }
 .section-ink + .section-ink { border-top: 1px solid rgba(227, 192, 120, .12); }
 .section-ink {
   background:
@@ -365,8 +366,12 @@ p { margin: 0; }
 .section-ink .about-copy > p { color: var(--muted-dark); }
 .section-ink .tick-list li { color: #E4ECE7; }
 .tick-list { display: grid; gap: 12px; margin-bottom: 32px; }
-.tick-list li { display: flex; gap: 12px; align-items: flex-start; }
-.tick-list [data-lucide], .tick-list .lucide { width: 22px; height: 22px; padding: 4px; border-radius: 50%; background: linear-gradient(145deg, #22553F, #164536); color: var(--gold); box-shadow: inset 0 0 0 1px rgba(227, 192, 120, .5); stroke-width: 3; margin-top: 2px; box-sizing: border-box; }
+.tick-list li { display: flex; gap: 12px; align-items: flex-start; line-height: 1.6; }
+.tick-list [data-lucide], .tick-list .lucide {
+  width: 22px; height: 22px; padding: 5px; flex-shrink: 0; box-sizing: border-box;
+  border-radius: 50%; background: var(--green-solid); color: var(--gold-light); stroke-width: 3.2;
+  margin-top: 2px; margin-top: calc((1lh - 22px) / 2); /* centre on the first line of text */
+}
 
 .facts { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 88px; border-top: 1px solid var(--line); }
 .facts li { padding: 28px 24px 0 0; }
@@ -479,7 +484,8 @@ p { margin: 0; }
 .svc-tag-neutral { color: var(--muted); border-color: var(--line); }
 .svc-list { display: grid; gap: 14px; margin: 22px 0 28px; }
 .svc-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 0.94rem; line-height: 1.45; color: #2F4039; }
-.svc-list svg { width: 20px; height: 20px; margin-top: 1px; color: var(--gold); fill: #164536; stroke-width: 2.2; flex-shrink: 0; }
+.svc-list svg { width: 22px; height: 22px; margin-top: calc((1lh - 22px) / 2); color: var(--gold-light); fill: #164536; stroke-width: 2.4; flex-shrink: 0; }
+.svc-list svg circle { stroke: none; } /* no gold ring around the tick */
 .svc-btn { margin-top: auto; min-height: 52px; padding: 14px 20px; line-height: 1.2; }
 /* Align titles, descriptions, tags and lists across cards where subgrid is supported */
 @supports (grid-template-rows: subgrid) {
@@ -515,9 +521,15 @@ p { margin: 0; }
 .vt-art .candles rect { fill: rgba(227, 192, 120,.7); }
 .vt-art .candles rect:nth-child(3n) { fill: rgba(240,82,91,.75); }
 .vt-art .dash { stroke: rgba(255,255,255,.3); stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
-.play { position: absolute; left: 50%; top: 50%; width: 54px; height: 54px; border-radius: 50%; background: var(--gold-gradient); color: var(--gold-ink); display: grid; place-items: center; transform: translate(-50%, -50%); transition: transform .25s var(--ease); box-shadow: 0 0 0 8px rgba(227, 192, 120,.18); }
-.play [data-lucide], .play .lucide { width: 22px; height: 22px; fill: currentColor; margin-left: 3px; }
-.video-thumb:hover .play { transform: translate(-50%, -50%) scale(1.08); }
+.play {
+  position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; transform: translate(-50%, -50%);
+  border-radius: 50%; background: rgba(10, 31, 26, .28); /* see-through centre */
+  backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+  transition: transform .25s var(--ease), filter .25s;
+}
+.play-icon { display: block; width: 100%; height: 100%; filter: drop-shadow(0 6px 14px rgba(10, 31, 26, .45)); }
+.svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.video-thumb:hover .play { transform: translate(-50%, -50%) scale(1.08); filter: brightness(1.08); }
 .duration { position: absolute; right: 10px; bottom: 10px; font-size: 0.75rem; font-weight: 600; color: var(--white); background: rgba(7, 23, 19, .72); padding: 3px 8px; border-radius: 8px; font-variant-numeric: tabular-nums; }
 .video-meta { margin-top: 14px; }
 .level { font-size: 0.78rem; font-weight: 600; color: #8C6A2E; background: rgba(227, 192, 120, 0.25); padding: 3px 10px; border-radius: var(--r-pill); }
@@ -827,5 +839,5 @@ p { margin: 0; }
 }
 
 /* MT5 platform image (replaces the drawn device mockup) */
-.platform-media { display: block; background: var(--ink); border: 1px solid rgba(227, 192, 120, .2); border-radius: var(--r-lg); overflow: hidden; box-shadow: 0 30px 60px -30px rgba(11, 31, 26, .55); }
-.platform-media img { display: block; width: 100%; height: auto; }
+.platform-media { display: flex; justify-content: center; }
+.platform-media img { display: block; width: 100%; max-width: 620px; height: auto; filter: drop-shadow(0 28px 40px rgba(14, 51, 40, .28)); }

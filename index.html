@@ -11,9 +11,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <meta name="theme-color" content="#0A1F1A" />
-  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=5" />
 </head>
 <body>
+  <!-- Shared SVG gradient (used by the video play buttons) -->
+  <svg class="svg-defs" aria-hidden="true" focusable="false"><defs>
+    <linearGradient id="playGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBE7A6"/><stop offset=".5" stop-color="#E3BA67"/><stop offset="1" stop-color="#B9883A"/></linearGradient>
+  </defs></svg>
 
   <!-- Risk warning bar (wording to be supplied by the client's compliance team) -->
   <div class="risk-bar" role="note">
@@ -211,7 +215,7 @@
     </section>
 
     <!-- ===================== E. COMPANY OVERVIEW ===================== -->
-    <section class="section section-ink" id="about">
+    <section class="section section-pure-white" id="about">
       <div class="container about-grid">
         <div class="about-visual" aria-hidden="true">
           <div class="about-card about-card-main">
@@ -238,7 +242,7 @@
             <li><i data-lucide="check"></i> MetaTrader 5 on desktop, web and mobile</li>
             <li><i data-lucide="check"></i> Copy trading, PAMM, funded accounts and partner programmes</li>
           </ul>
-          <a href="#about" class="btn btn-outline-gold">About us</a>
+          <a href="#about" class="btn btn-dark">About us</a>
         </div>
       </div>
 
@@ -380,8 +384,8 @@
 
         <div class="platform-panel">
           <picture class="platform-media">
-            <source srcset="assets/platform-mt5-mobile.webp?v=3" type="image/webp" />
-            <img src="assets/platform-mt5-mobile.jpg?v=3" width="1000" height="809" loading="lazy" decoding="async"
+            <source srcset="assets/platform-mt5-phones.webp?v=5" type="image/webp" />
+            <img src="assets/platform-mt5-phones.png?v=5" width="1000" height="803" loading="lazy" decoding="async"
                  alt="MetaTrader 5 mobile app on two phones: the Quotes screen with currency prices, and an AUDCAD chart with Quotes, Chart, Trade, History and Settings tabs" />
           </picture>
 
@@ -493,7 +497,7 @@
           <article class="video-card">
             <button class="video-thumb vt-1" aria-label="Play: Forex trading fundamentals">
               <svg class="vt-art" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,80 30,70 55,75 80,50 105,58 130,35 160,42 200,15"/></svg>
-              <span class="play"><i data-lucide="play"></i></span>
+              <span class="play"><svg class="play-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29.5" fill="none" stroke="url(#playGold)" stroke-width="3"/><path d="M26 21.5v21a1.6 1.6 0 0 0 2.4 1.4l17-10.5a1.6 1.6 0 0 0 0-2.8l-17-10.5A1.6 1.6 0 0 0 26 21.5Z" fill="url(#playGold)"/></svg></span>
               <span class="duration">12:40</span>
             </button>
             <div class="video-meta"><span class="level">Beginner</span></div>
@@ -503,7 +507,7 @@
           <article class="video-card">
             <button class="video-thumb vt-2" aria-label="Play: Reading candlestick charts">
               <svg class="vt-art" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><g class="candles"><rect x="20" y="40" width="10" height="30"/><rect x="45" y="30" width="10" height="25"/><rect x="70" y="45" width="10" height="35"/><rect x="95" y="25" width="10" height="30"/><rect x="120" y="20" width="10" height="20"/><rect x="145" y="35" width="10" height="28"/><rect x="170" y="15" width="10" height="25"/></g></svg>
-              <span class="play"><i data-lucide="play"></i></span>
+              <span class="play"><svg class="play-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29.5" fill="none" stroke="url(#playGold)" stroke-width="3"/><path d="M26 21.5v21a1.6 1.6 0 0 0 2.4 1.4l17-10.5a1.6 1.6 0 0 0 0-2.8l-17-10.5A1.6 1.6 0 0 0 26 21.5Z" fill="url(#playGold)"/></svg></span>
               <span class="duration">09:15</span>
             </button>
             <div class="video-meta"><span class="level">Beginner</span></div>
@@ -513,7 +517,7 @@
           <article class="video-card">
             <button class="video-thumb vt-3" aria-label="Play: Weekly market analysis">
               <svg class="vt-art" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,30 25,40 50,35 75,60 100,55 125,70 150,62 175,80 200,72"/></svg>
-              <span class="play"><i data-lucide="play"></i></span>
+              <span class="play"><svg class="play-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29.5" fill="none" stroke="url(#playGold)" stroke-width="3"/><path d="M26 21.5v21a1.6 1.6 0 0 0 2.4 1.4l17-10.5a1.6 1.6 0 0 0 0-2.8l-17-10.5A1.6 1.6 0 0 0 26 21.5Z" fill="url(#playGold)"/></svg></span>
               <span class="duration">18:02</span>
             </button>
             <div class="video-meta"><span class="level">Intermediate</span></div>
@@ -523,7 +527,7 @@
           <article class="video-card">
             <button class="video-thumb vt-4" aria-label="Play: Risk management essentials">
               <svg class="vt-art" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="35" x2="200" y2="35" class="dash"/><line x1="0" y1="70" x2="200" y2="70" class="dash"/><polyline points="0,55 30,48 60,58 90,44 120,52 150,40 200,50"/></svg>
-              <span class="play"><i data-lucide="play"></i></span>
+              <span class="play"><svg class="play-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29.5" fill="none" stroke="url(#playGold)" stroke-width="3"/><path d="M26 21.5v21a1.6 1.6 0 0 0 2.4 1.4l17-10.5a1.6 1.6 0 0 0 0-2.8l-17-10.5A1.6 1.6 0 0 0 26 21.5Z" fill="url(#playGold)"/></svg></span>
               <span class="duration">14:27</span>
             </button>
             <div class="video-meta"><span class="level">All levels</span></div>
@@ -813,6 +817,6 @@
   </div>
 
   <script src="https://unpkg.com/lucide@1.50.0/dist/umd/lucide.min.js"></script>
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
