@@ -9,7 +9,7 @@
   "use strict";
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const COLORS = { up: "#27c77a", down: "#f0525b", gold: "#E3C078", grid: "rgba(227, 192, 120,0.08)", text: "#9fbab0", ink: "#0B1F1A" };
+  const COLORS = { up: "#27c77a", down: "#f0525b", gold: "#E3C078", grid: "rgba(227, 192, 120,0.08)", text: "#9fbab0", ink: "#0A1F1A" };
 
   /* ---------- Sample instruments ---------- */
   const INSTRUMENTS = [
@@ -143,7 +143,7 @@
         const label = fmt(last.close, opts.dp ?? 2);
         const tw = ctx.measureText(label).width + 12;
         ctx.beginPath(); ctx.roundRect ? ctx.roundRect(plotW + 2, ly - 10, tw, 20, 5) : ctx.rect(plotW + 2, ly - 10, tw, 20); ctx.fill();
-        ctx.fillStyle = "#0B1F1A"; ctx.fillText(label, plotW + 8, ly);
+        ctx.fillStyle = "#0E3A2E"; ctx.fillText(label, plotW + 8, ly);
       }
     }
   }
