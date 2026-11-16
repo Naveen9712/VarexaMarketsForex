@@ -182,9 +182,13 @@
     nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
     window.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
 
-    // Highlight the nav item for the section in view
+    // Inner pages (about.html etc.) set <body data-page="..."> and highlight their own menu item
     const links = [...nav.querySelectorAll("ul a")];
-    const map = new Map(links.map((a) => [a.getAttribute("href"), a]));
+    const page = document.body.dataset.page;
+    if (page) { links.forEach((l) => l.classList.toggle("is-active", l.dataset.nav === page)); return; }
+
+    // Homepage: highlight the nav item for the section in view
+    const map = new Map(links.map((a) => [a.dataset.nav, a]));
     const sections = ["#about", "#advantages", "#markets", "#platforms", "#services", "#education", "#news"]
       .map((s) => document.querySelector(s)).filter(Boolean);
     if ("IntersectionObserver" in window) {
@@ -192,7 +196,7 @@
         entries.forEach((en) => {
           if (en.isIntersecting) {
             links.forEach((l) => l.classList.remove("is-active"));
-            (map.get("#" + en.target.id) || links[0]).classList.add("is-active");
+            (map.get(en.target.id) || links[0]).classList.add("is-active");
           }
         });
       }, { rootMargin: "-45% 0px -50% 0px" });
@@ -381,6 +385,6 @@
     initForm();
     initChat();
     icons();
-    if (!reduceMotion) setInterval(tickPrices, 2200);
+    if (!reduceMotion && document.getElementById("marketBody")) setInterval(tickPrices, 2200); // homepage only
   });
 })();

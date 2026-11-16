@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <meta name="theme-color" content="#0A1F1A" />
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=6" />
 </head>
 <body>
   <!-- Shared SVG gradient (used by the video play buttons) -->
@@ -36,14 +36,14 @@
 
       <nav class="main-nav" id="mainNav" aria-label="Main">
         <ul>
-          <li><a href="#top" class="is-active">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#advantages">Our Advantages</a></li>
-          <li><a href="#markets">Markets</a></li>
-          <li><a href="#platforms">Trading Platforms</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#news">News</a></li>
+          <li><a href="#top" class="is-active" data-nav="home">Home</a></li>
+          <li><a href="about.html" data-nav="about">About Us</a></li>
+          <li><a href="advantages.html" data-nav="advantages">Our Advantages</a></li>
+          <li><a href="#markets" data-nav="markets">Markets</a></li>
+          <li><a href="#platforms" data-nav="platforms">Trading Platforms</a></li>
+          <li><a href="services.html" data-nav="services">Services</a></li>
+          <li><a href="#education" data-nav="education">Education</a></li>
+          <li><a href="#news" data-nav="news">News</a></li>
         </ul>
         <div class="nav-actions-mobile">
           <a href="#contact" class="btn btn-ghost-light">Log in</a>
@@ -242,7 +242,7 @@
             <li><i data-lucide="check"></i> MetaTrader 5 on desktop, web and mobile</li>
             <li><i data-lucide="check"></i> Copy trading, PAMM, funded accounts and partner programmes</li>
           </ul>
-          <a href="#about" class="btn btn-dark">About us</a>
+          <a href="about.html" class="btn btn-dark">More about us</a>
         </div>
       </div>
 
@@ -753,8 +753,8 @@
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="#about">About us</a></li>
-            <li><a href="#advantages">Our advantages</a></li>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="advantages.html">Our advantages</a></li>
             <li><a href="#news">News</a></li>
             <li><a href="#contact">Contact us</a></li>
             <li><a href="#">FAQs</a></li>
@@ -773,10 +773,10 @@
           <h4>Trading</h4>
           <ul>
             <li><a href="#platforms">MetaTrader 5</a></li>
-            <li><a href="#services">Copy trading</a></li>
-            <li><a href="#services">PAMM accounts</a></li>
-            <li><a href="#services">Funded accounts</a></li>
-            <li><a href="#services">Partners</a></li>
+            <li><a href="services.html#copy-trading">Copy trading</a></li>
+            <li><a href="services.html#pamm">PAMM accounts</a></li>
+            <li><a href="services.html#funded">Funded accounts</a></li>
+            <li><a href="services.html#partners">Partners</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -817,6 +817,6 @@
   </div>
 
   <script src="https://unpkg.com/lucide@1.50.0/dist/umd/lucide.min.js"></script>
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>
