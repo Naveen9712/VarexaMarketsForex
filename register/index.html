@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open an Account | Varexa Markets</title>
+  <meta name="description" content="Register for a Varexa Markets trading account in a few simple steps." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="../assets/favicon.png" />
+  <meta name="theme-color" content="#0A1F1A" />
+  <link rel="stylesheet" href="../style.css?v=7" />
+  <link rel="stylesheet" href="style.css?v=7" />
+</head>
+<body data-page="register">
+  <!-- Risk warning bar (wording to be supplied by the client's compliance team) -->
+  <div class="risk-bar" role="note">
+    <div class="container">
+      <p><strong>Risk warning:</strong> CFDs are complex instruments and carry a high risk of losing money rapidly due to leverage. Final wording to be provided by compliance.</p>
+    </div>
+  </div>
+
+  <!-- ===================== A. HEADER ===================== -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo" aria-label="Varexa Markets home">
+        <img class="logo-mark" src="../assets/varexa-mark.png" width="52" height="34" alt="" />
+        <span class="logo-text">Varexa<small>Markets</small></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main">
+        <ul>
+          <li><a href="../index.html" data-nav="home">Home</a></li>
+          <li><a href="../about/index.html" data-nav="about">About Us</a></li>
+          <li><a href="../advantages/index.html" data-nav="advantages">Our Advantages</a></li>
+          <li><a href="../index.html#markets" data-nav="markets">Markets</a></li>
+          <li><a href="../index.html#platforms" data-nav="platforms">Trading Platforms</a></li>
+          <li><a href="../services/index.html" data-nav="services">Services</a></li>
+          <li><a href="../education/index.html" data-nav="education">Education</a></li>
+          <li><a href="../news/index.html" data-nav="news">News</a></li>
+        </ul>
+        <div class="nav-actions-mobile">
+          <a href="../index.html#contact" class="btn btn-ghost-light">Log in</a>
+          <a href="../register/index.html" class="btn btn-gold">Sign up</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <a href="../index.html#contact" class="btn btn-ghost-light btn-sm">Log in</a>
+        <a href="../register/index.html" class="btn btn-gold btn-sm">Sign up</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="page page-register">
+
+    <!-- ===================== REGISTRATION ===================== -->
+    <section class="reg-shell" aria-labelledby="reg-title">
+      <div class="container reg-grid">
+
+        <!-- Left: intro + step list -->
+        <aside class="reg-aside">
+          <ol class="breadcrumb" aria-label="Breadcrumb">
+            <li><a href="../index.html">Home</a></li>
+            <li><span aria-current="page">Open an account</span></li>
+          </ol>
+          <span class="eyebrow eyebrow-dark">Account registration</span>
+          <h1 id="reg-title">Open your <span class="text-gold">Varexa Markets</span> account</h1>
+          <p class="reg-lead">It takes about five minutes. Tell us about yourself, and the Varexa Markets team will contact you to complete your account.</p>
+
+          <ol class="reg-steps" id="regSteps">
+            <li data-step="1"><button type="button" disabled><span class="reg-dot">1</span><span><strong>Account type</strong><small>Individual or corporate</small></span></button></li>
+            <li data-step="2"><button type="button" disabled><span class="reg-dot">2</span><span><strong>Personal details</strong><small>Name, date of birth, residence</small></span></button></li>
+            <li data-step="3"><button type="button" disabled><span class="reg-dot">3</span><span><strong>Contact and address</strong><small>Email, phone, address</small></span></button></li>
+            <li data-step="4"><button type="button" disabled><span class="reg-dot">4</span><span><strong>Trading profile</strong><small>Experience and finances</small></span></button></li>
+            <li data-step="5"><button type="button" disabled><span class="reg-dot">5</span><span><strong>Security and agreements</strong><small>Password and terms</small></span></button></li>
+            <li data-step="6"><button type="button" disabled><span class="reg-dot">6</span><span><strong>Review and submit</strong><small>Check your details</small></span></button></li>
+          </ol>
+
+          <div class="reg-help">
+            <i data-lucide="headphones"></i>
+            <p><strong>Need help?</strong> Our team can guide you through registration.</p>
+            <button type="button" class="btn btn-outline-gold btn-sm" data-open-chat>Live chat</button>
+          </div>
+          <p class="reg-login">Already registered? <a href="../index.html#contact">Contact support to log in</a></p>
+        </aside>
+
+        <!-- Right: form -->
+        <div class="reg-main">
+          <div class="reg-progress" aria-hidden="true">
+            <div class="reg-progress-top"><span id="regStepLabel">Step 1 of 6</span><strong id="regStepName">Account type</strong></div>
+            <div class="reg-progress-bar"><span id="regProgressFill"></span></div>
+          </div>
+          <p class="sr-only" id="regLive" aria-live="polite"></p>
+
+          <form class="reg-form" id="regForm" action="#" method="post" novalidate>
+
+            <!-- STEP 1: Account type -->
+            <fieldset class="reg-step" data-step="1" data-name="Account type">
+              <legend class="reg-legend"><span>Step 1</span>Choose your account type</legend>
+              <p class="reg-hint">Select who the trading account will be registered to.</p>
+
+              <div class="choice-grid" role="radiogroup" aria-labelledby="acctTypeLabel">
+                <span class="sr-only" id="acctTypeLabel">Account type</span>
+                <label class="choice-card">
+                  <input type="radio" name="accountType" value="Individual" required />
+                  <span class="choice-check" aria-hidden="true"><i data-lucide="check"></i></span>
+                  <span class="choice-icon" aria-hidden="true"><i data-lucide="user-round"></i></span>
+                  <strong>Individual</strong>
+                  <span>For personal trading in your own name.</span>
+                </label>
+                <label class="choice-card">
+                  <input type="radio" name="accountType" value="Corporate" />
+                  <span class="choice-check" aria-hidden="true"><i data-lucide="check"></i></span>
+                  <span class="choice-icon" aria-hidden="true"><i data-lucide="building-2"></i></span>
+                  <strong>Corporate</strong>
+                  <span>For companies and other legal entities trading in the company's name.</span>
+                </label>
+              </div>
+              <em class="err group-err" data-for="accountType">Please choose an account type.</em>
+
+              <div class="reg-block">
+                <h3 class="reg-sub">What are you interested in?</h3>
+                <p class="reg-hint">Choose one or more. This helps our team prepare the right information for you.</p>
+                <div class="chip-grid" data-group="interest">
+                  <label class="chip-check"><input type="checkbox" name="interest" value="Trading on my own" data-key="self" /><span><i data-lucide="chart-candlestick"></i> Trading on my own</span></label>
+                  <label class="chip-check"><input type="checkbox" name="interest" value="Copy trading" data-key="copy-trading" /><span><i data-lucide="copy"></i> Copy trading</span></label>
+                  <label class="chip-check"><input type="checkbox" name="interest" value="PAMM accounts" data-key="pamm" /><span><i data-lucide="chart-pie"></i> PAMM accounts</span></label>
+                  <label class="chip-check"><input type="checkbox" name="interest" value="Funded account" data-key="funded" /><span><i data-lucide="trophy"></i> Funded account</span></label>
+                  <label class="chip-check"><input type="checkbox" name="interest" value="Partner programme" data-key="partners" /><span><i data-lucide="handshake"></i> Partner programme</span></label>
+                </div>
+                <em class="err group-err" data-for="interest">Please choose at least one option.</em>
+              </div>
+
+              <div class="reg-platform"><i data-lucide="monitor-smartphone"></i><span>Accounts are traded on <strong>MetaTrader 5</strong> (desktop, web and mobile).</span></div>
+            </fieldset>
+
+            <!-- STEP 2: Personal details -->
+            <fieldset class="reg-step" data-step="2" data-name="Personal details" hidden>
+              <legend class="reg-legend"><span>Step 2</span>Personal details</legend>
+              <p class="reg-hint">Enter your details exactly as they appear on your ID document.</p>
+
+              <div class="field-row cols-3">
+                <label class="field">
+                  <span>Title</span>
+                  <select name="title" required>
+                    <option value="">Select</option><option>Mr</option><option>Ms</option><option>Mrs</option><option>Mx</option><option>Dr</option>
+                  </select>
+                  <em class="err">Please select a title.</em>
+                </label>
+                <label class="field">
+                  <span>First name</span>
+                  <input type="text" name="firstName" autocomplete="given-name" required data-rule="name" />
+                  <em class="err">Please enter your first name (letters only).</em>
+                </label>
+                <label class="field">
+                  <span>Last name</span>
+                  <input type="text" name="lastName" autocomplete="family-name" required data-rule="name" />
+                  <em class="err">Please enter your last name (letters only).</em>
+                </label>
+              </div>
+
+              <div class="field-row">
+                <label class="field">
+                  <span>Date of birth</span>
+                  <input type="date" name="dob" autocomplete="bday" required data-rule="adult" />
+                  <em class="err">You must be at least 18 years old to open an account.</em>
+                </label>
+                <label class="field">
+                  <span>Nationality</span>
+                  <select name="nationality" required data-countries><option value="">Select country</option></select>
+                  <em class="err">Please select your nationality.</em>
+                </label>
+              </div>
+
+              <label class="field">
+                <span>Country of residence</span>
+                <select name="residence" required data-countries><option value="">Select country</option></select>
+                <em class="err">Please select your country of residence.</em>
+                <small class="field-note">Availability of accounts and services depends on your country. <span class="ph">[Restricted countries to be confirmed by Varexa Markets.]</span></small>
+              </label>
+
+              <div class="reg-block corp-only" hidden>
+                <h3 class="reg-sub">Company details</h3>
+                <div class="field-row">
+                  <label class="field">
+                    <span>Registered company name</span>
+                    <input type="text" name="companyName" autocomplete="organization" data-required="corporate" />
+                    <em class="err">Please enter the company name.</em>
+                  </label>
+                  <label class="field">
+                    <span>Company registration number</span>
+                    <input type="text" name="companyNumber" data-required="corporate" />
+                    <em class="err">Please enter the registration number.</em>
+                  </label>
+                </div>
+                <div class="field-row">
+                  <label class="field">
+                    <span>Country of incorporation</span>
+                    <select name="companyCountry" data-countries data-required="corporate"><option value="">Select country</option></select>
+                    <em class="err">Please select the country of incorporation.</em>
+                  </label>
+                  <label class="field">
+                    <span>Your role in the company</span>
+                    <select name="companyRole" data-required="corporate">
+                      <option value="">Select</option><option>Director</option><option>Shareholder</option><option>Authorised representative</option><option>Other</option>
+                    </select>
+                    <em class="err">Please select your role.</em>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- STEP 3: Contact and address -->
+            <fieldset class="reg-step" data-step="3" data-name="Contact and address" hidden>
+              <legend class="reg-legend"><span>Step 3</span>Contact and address</legend>
+              <p class="reg-hint">We will use these details to contact you about your registration.</p>
+
+              <label class="field">
+                <span>Email address</span>
+                <input type="email" name="email" autocomplete="email" required data-rule="email" />
+                <em class="err">Please enter a valid email address.</em>
+              </label>
+
+              <div class="field">
+                <span id="phoneLabel">Mobile number</span>
+                <div class="phone-group">
+                  <select name="phoneCode" aria-label="Country code" required data-dialcodes><option value="">Code</option></select>
+                  <input type="tel" name="phone" autocomplete="tel-national" inputmode="tel" aria-labelledby="phoneLabel" required data-rule="phone" />
+                </div>
+                <em class="err">Please select a country code and enter a valid number (6–14 digits).</em>
+              </div>
+
+              <label class="field">
+                <span>Address line 1</span>
+                <input type="text" name="address1" autocomplete="address-line1" required />
+                <em class="err">Please enter your address.</em>
+              </label>
+              <label class="field">
+                <span>Address line 2 <small>(optional)</small></span>
+                <input type="text" name="address2" autocomplete="address-line2" />
+              </label>
+              <div class="field-row cols-3">
+                <label class="field">
+                  <span>City</span>
+                  <input type="text" name="city" autocomplete="address-level2" required />
+                  <em class="err">Please enter your city.</em>
+                </label>
+                <label class="field">
+                  <span>State / region <small>(optional)</small></span>
+                  <input type="text" name="region" autocomplete="address-level1" />
+                </label>
+                <label class="field">
+                  <span>Postal code</span>
+                  <input type="text" name="postcode" autocomplete="postal-code" required data-rule="postcode" />
+                  <em class="err">Please enter a valid postal code.</em>
+                </label>
+              </div>
+              <div class="field-row">
+                <label class="field">
+                  <span>Preferred language</span>
+                  <select name="language" required>
+                    <option value="">Select</option><option>English</option><option>Arabic</option><option>Chinese</option><option>French</option><option>German</option><option>Hindi</option><option>Portuguese</option><option>Spanish</option>
+                  </select>
+                  <em class="err">Please select a language.</em>
+                </label>
+                <label class="field">
+                  <span>Referral or partner code <small>(optional)</small></span>
+                  <input type="text" name="referral" autocomplete="off" data-rule="referral" />
+                  <em class="err">Codes use letters and numbers only.</em>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- STEP 4: Trading profile -->
+            <fieldset class="reg-step" data-step="4" data-name="Trading profile" hidden>
+              <legend class="reg-legend"><span>Step 4</span>Trading profile</legend>
+              <p class="reg-hint">Brokers are required to check that leveraged products are suitable for each client. Your answers help us do that.</p>
+
+              <div class="field-row">
+                <label class="field">
+                  <span>Employment status</span>
+                  <select name="employment" required>
+                    <option value="">Select</option><option>Employed</option><option>Self-employed</option><option>Business owner</option><option>Retired</option><option>Student</option><option>Unemployed</option>
+                  </select>
+                  <em class="err">Please select your employment status.</em>
+                </label>
+                <label class="field">
+                  <span>Main source of funds</span>
+                  <select name="funds" required>
+                    <option value="">Select</option><option>Salary or employment income</option><option>Business income</option><option>Savings</option><option>Investments</option><option>Inheritance or gift</option><option>Pension</option><option>Other</option>
+                  </select>
+                  <em class="err">Please select your source of funds.</em>
+                </label>
+              </div>
+              <div class="field-row">
+                <label class="field">
+                  <span>Annual income (USD)</span>
+                  <select name="income" required>
+                    <option value="">Select</option><option>Under 25,000</option><option>25,000 – 50,000</option><option>50,000 – 100,000</option><option>100,000 – 250,000</option><option>Over 250,000</option>
+                  </select>
+                  <em class="err">Please select an income range.</em>
+                </label>
+                <label class="field">
+                  <span>Net worth excluding home (USD)</span>
+                  <select name="netWorth" required>
+                    <option value="">Select</option><option>Under 25,000</option><option>25,000 – 100,000</option><option>100,000 – 500,000</option><option>500,000 – 1,000,000</option><option>Over 1,000,000</option>
+                  </select>
+                  <em class="err">Please select a net worth range.</em>
+                </label>
+              </div>
+
+              <div class="field">
+                <span id="expLabel">Experience trading forex or CFDs</span>
+                <div class="seg" role="radiogroup" aria-labelledby="expLabel">
+                  <label><input type="radio" name="experience" value="None" required /><span>None</span></label>
+                  <label><input type="radio" name="experience" value="Less than 1 year" /><span>Under 1 year</span></label>
+                  <label><input type="radio" name="experience" value="1–3 years" /><span>1–3 years</span></label>
+                  <label><input type="radio" name="experience" value="More than 3 years" /><span>3+ years</span></label>
+                </div>
+                <em class="err group-err" data-for="experience">Please choose your experience level.</em>
+              </div>
+
+              <label class="field">
+                <span>Main trading objective</span>
+                <select name="objective" required>
+                  <option value="">Select</option><option>Speculation / short-term trading</option><option>Long-term investment</option><option>Hedging existing positions</option><option>Learning to trade</option>
+                </select>
+                <em class="err">Please select your main objective.</em>
+              </label>
+
+              <div class="field">
+                <span id="pepLabel">Are you a politically exposed person (PEP), or closely related to one?</span>
+                <div class="seg seg-2" role="radiogroup" aria-labelledby="pepLabel">
+                  <label><input type="radio" name="pep" value="No" required /><span>No</span></label>
+                  <label><input type="radio" name="pep" value="Yes" /><span>Yes</span></label>
+                </div>
+                <em class="err group-err" data-for="pep">Please answer this question.</em>
+                <small class="field-note">A PEP is someone who holds, or has held, a prominent public function, such as a senior politician, judge or senior official.</small>
+              </div>
+
+              <p class="callout callout-risk reg-risk"><i data-lucide="triangle-alert"></i><span>CFDs are complex instruments and carry a high risk of losing money rapidly due to leverage. Only trade with money you can afford to lose.</span></p>
+            </fieldset>
+
+            <!-- STEP 5: Security and agreements -->
+            <fieldset class="reg-step" data-step="5" data-name="Security and agreements" hidden>
+              <legend class="reg-legend"><span>Step 5</span>Security and agreements</legend>
+              <p class="reg-hint">Create a password for your client area, then review and accept the agreements.</p>
+
+              <div class="field-row">
+                <label class="field">
+                  <span>Password</span>
+                  <span class="pw-wrap">
+                    <input type="password" name="password" autocomplete="new-password" required data-rule="password" aria-describedby="pwRules" />
+                    <button type="button" class="pw-toggle" aria-label="Show password" data-toggle-pw><i data-lucide="eye"></i></button>
+                  </span>
+                  <em class="err">Your password does not meet all the requirements below.</em>
+                </label>
+                <label class="field">
+                  <span>Confirm password</span>
+                  <span class="pw-wrap">
+                    <input type="password" name="password2" autocomplete="new-password" required data-rule="match" />
+                    <button type="button" class="pw-toggle" aria-label="Show password" data-toggle-pw><i data-lucide="eye"></i></button>
+                  </span>
+                  <em class="err">Passwords do not match.</em>
+                </label>
+              </div>
+              <div class="pw-meter" aria-hidden="true"><span id="pwBar"></span></div>
+              <ul class="pw-rules" id="pwRules">
+                <li data-rule="len">At least 8 characters</li>
+                <li data-rule="upper">One uppercase letter</li>
+                <li data-rule="lower">One lowercase letter</li>
+                <li data-rule="num">One number</li>
+                <li data-rule="sym">One special character</li>
+              </ul>
+
+              <div class="agree-list">
+                <label class="agree">
+                  <input type="checkbox" name="agreeTerms" required />
+                  <span>I have read and accept the <a href="#">Client Agreement</a> and <a href="#">Terms and Conditions</a>.</span>
+                </label>
+                <label class="agree">
+                  <input type="checkbox" name="agreePrivacy" required />
+                  <span>I have read the <a href="#">Privacy Policy</a> and agree to my information being used to process this registration.</span>
+                </label>
+                <label class="agree">
+                  <input type="checkbox" name="agreeRisk" required />
+                  <span>I understand the <a href="#">Risk Disclosure</a>: trading forex and CFDs on margin carries a high level of risk and I could lose more than my initial investment.</span>
+                </label>
+                <label class="agree optional">
+                  <input type="checkbox" name="marketing" />
+                  <span>Send me market updates and educational content by email. <small>(optional)</small></span>
+                </label>
+                <em class="err group-err" data-for="agreements">Please accept the three required agreements to continue.</em>
+              </div>
+            </fieldset>
+
+            <!-- STEP 6: Review -->
+            <fieldset class="reg-step" data-step="6" data-name="Review and submit" hidden>
+              <legend class="reg-legend"><span>Step 6</span>Review your details</legend>
+              <p class="reg-hint">Check everything is correct. Use Edit to change a section.</p>
+              <div class="review" id="regReview"></div>
+            </fieldset>
+
+            <div class="reg-nav">
+              <button type="button" class="btn btn-outline-dark" id="regBack" hidden><i data-lucide="arrow-left"></i> Back</button>
+              <button type="button" class="btn btn-gold" id="regNext">Continue <i data-lucide="arrow-right"></i></button>
+              <button type="submit" class="btn btn-gold" id="regSubmit" hidden>Submit registration <i data-lucide="check"></i></button>
+            </div>
+            <p class="reg-proto"><i data-lucide="info"></i> Prototype for review: this form checks your entries in the browser only. Nothing is sent or saved.</p>
+          </form>
+
+          <!-- Success -->
+          <div class="reg-done" id="regDone" hidden tabindex="-1">
+            <span class="reg-done-icon" aria-hidden="true"><i data-lucide="check"></i></span>
+            <h2>Thank you<span id="regDoneName"></span></h2>
+            <p>All steps are complete. Once this form is connected to a secure backend, details like these would go to the Varexa Markets team to finish opening the account.</p>
+            <p class="reg-proto"><i data-lucide="info"></i> This is a design prototype. No information was sent, stored or emailed.</p>
+            <div class="reg-done-actions">
+              <a href="../index.html" class="btn btn-gold">Back to homepage</a>
+              <a href="../education/index.html" class="btn btn-outline-dark">Start learning</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== N. FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="../index.html" class="footer-logo" aria-label="Varexa Markets home"><img src="../assets/varexa-logo.png" width="190" height="142" alt="Varexa Markets" /></a>
+          <p>[Short company description and registered entity name to be provided by the client.]</p>
+          <ul class="socials">
+            <li><a href="#" aria-label="LinkedIn"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1v5.46h-4v-4.84c0-1.16-.02-2.64-1.61-2.64-1.61 0-1.86 1.26-1.86 2.56v4.92h-3.93v-11Z"/></svg></a></li>
+            <li><a href="#" aria-label="Instagram"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6Zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Zm5-8.95a1.12 1.12 0 1 1 0 2.24 1.12 1.12 0 0 1 0-2.24ZM12 2.5c-2.58 0-2.9.01-3.92.06-3.47.16-5.36 2.08-5.52 5.52C2.51 9.1 2.5 9.42 2.5 12s.01 2.9.06 3.92c.16 3.44 2.05 5.36 5.52 5.52 1.02.05 1.34.06 3.92.06s2.9-.01 3.92-.06c3.44-.16 5.37-2.07 5.52-5.52.05-1.02.06-1.34.06-3.92s-.01-2.9-.06-3.92c-.15-3.43-2.07-5.36-5.52-5.52C14.9 2.51 14.58 2.5 12 2.5Zm0 1.71c2.54 0 2.84.01 3.84.06 2.58.12 3.78 1.34 3.9 3.9.05 1 .06 1.3.06 3.83s-.01 2.84-.06 3.84c-.12 2.55-1.32 3.78-3.9 3.9-1 .04-1.3.05-3.84.05s-2.84-.01-3.84-.05c-2.59-.12-3.78-1.35-3.9-3.9-.05-1-.06-1.3-.06-3.84s.01-2.83.06-3.83c.12-2.56 1.32-3.79 3.9-3.9 1-.05 1.3-.06 3.84-.06Z"/></svg></a></li>
+            <li><a href="#" aria-label="Facebook"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21.5v-8.2h2.75l.41-3.2H13.5V8.06c0-.93.26-1.56 1.59-1.56h1.7V3.64a22.7 22.7 0 0 0-2.47-.13c-2.45 0-4.12 1.5-4.12 4.24v2.36H7.43v3.2h2.77v8.2h3.3Z"/></svg></a></li>
+            <li><a href="#" aria-label="YouTube"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.58 7.19a2.51 2.51 0 0 0-1.77-1.78C18.25 5 12 5 12 5s-6.25 0-7.81.41A2.51 2.51 0 0 0 2.42 7.2C2 8.75 2 12 2 12s0 3.25.42 4.81a2.51 2.51 0 0 0 1.77 1.78C5.75 19 12 19 12 19s6.25 0 7.81-.41a2.51 2.51 0 0 0 1.77-1.78C22 15.25 22 12 22 12s0-3.25-.42-4.81ZM10 15V9l5.2 3L10 15Z"/></svg></a></li>
+            <li><a href="#" aria-label="Telegram"><i data-lucide="send"></i></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="../about/index.html">About us</a></li>
+            <li><a href="../advantages/index.html">Our advantages</a></li>
+            <li><a href="../news/index.html">News</a></li>
+            <li><a href="../education/index.html">Education</a></li>
+            <li><a href="../index.html#contact">Contact us</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Markets</h4>
+          <ul>
+            <li><a href="../index.html#markets">Forex</a></li>
+            <li><a href="../index.html#markets">Commodities</a></li>
+            <li><a href="../index.html#markets">Indices</a></li>
+            <li><a href="../index.html#markets">Stock CFDs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Trading</h4>
+          <ul>
+            <li><a href="../index.html#platforms">MetaTrader 5</a></li>
+            <li><a href="../services/index.html#copy-trading">Copy trading</a></li>
+            <li><a href="../services/index.html#pamm">PAMM accounts</a></li>
+            <li><a href="../services/index.html#funded">Funded accounts</a></li>
+            <li><a href="../services/index.html#partners">Partners</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li>support@example.com</li>
+            <li>+00 000 000 000</li>
+            <li>[Office address]</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-legal">
+        <ul class="legal-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+          <li><a href="#">Risk Disclosure</a></li>
+          <li><a href="#">AML Policy</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+        <p class="legal-text"><strong>Risk warning:</strong> Trading leveraged products such as forex and CFDs carries a high level of risk and may not be suitable for all investors. You could lose more than your initial investment. [Full risk warning, regulatory details and restricted jurisdictions to be supplied by the client's compliance team.]</p>
+        <p class="copyright">&copy; <span id="year">2026</span> Varexa Markets. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating live chat (placeholder for third-party chat widget) -->
+  <button class="chat-fab" data-open-chat aria-label="Open live chat"><i data-lucide="message-circle"></i></button>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Live chat" hidden>
+    <div class="chat-head">
+      <strong>Live chat</strong>
+      <button class="chat-close" id="chatClose" aria-label="Close chat"><i data-lucide="x"></i></button>
+    </div>
+    <div class="chat-body">
+      <p class="chat-bubble">Hi there. How can we help you today?</p>
+      <p class="chat-hint">Placeholder: the live chat provider's widget (e.g. Tawk.to, LiveChat, Intercom) will load here.</p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@1.50.0/dist/umd/lucide.min.js"></script>
+  <script src="../script.js?v=7"></script>
+  <script src="script.js?v=7"></script>
+</body>
+</html>

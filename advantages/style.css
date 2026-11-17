@@ -1,0 +1,22 @@
+/* =========================================================
+   Our Advantages page (advantages/index.html)
+   Page-only styles. Shared styles (tokens, header, footer,
+   buttons, page hero, cards, tables) come from ../style.css.
+   ========================================================= */
+/* ---------- Term definitions (trading conditions) ---------- */
+.terms { display: grid; gap: 0; margin: 28px 0; }
+.terms div { display: grid; grid-template-columns: 140px 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); }
+.terms dt { font-weight: 700; color: var(--text); }
+.terms dd { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+/* ---------- Legal document links ---------- */
+.doc-list { display: flex; flex-wrap: wrap; gap: 10px; }
+.doc-list a { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 14px; background: rgba(227, 192, 120, .06); border: 1px solid rgba(227, 192, 120, .25); color: #E4ECE7; font-weight: 500; font-size: 0.92rem; transition: border-color .2s, background-color .2s; }
+.doc-list a:hover { border-color: var(--gold); background: rgba(227, 192, 120, .12); }
+.doc-list svg { width: 17px; height: 17px; color: var(--gold); }
+
+
+/* ---------- Responsive ---------- */
+@media (max-width: 680px) {
+  .terms div { grid-template-columns: 1fr; gap: 4px; }
+}

@@ -373,6 +373,60 @@
   }
 
   /* ---------- Boot ---------- */
+  /* ---------- Blog listing: topic filter + search (education/, news/) ---------- */
+  function initBlogFilter() {
+    const toolbar = document.querySelector(".blog-toolbar");
+    if (!toolbar) return;
+    const posts = [...document.querySelectorAll(".blog-section .post-featured, .blog-section .post-card")];
+    const chips = [...toolbar.querySelectorAll(".fchip")];
+    const search = toolbar.querySelector("input[type=search]");
+    const empty = document.querySelector(".blog-empty");
+    const count = document.querySelector(".blog-count");
+    let filter = "all";
+    const apply = () => {
+      const q = search.value.trim().toLowerCase();
+      let shown = 0;
+      posts.forEach((p) => {
+        const ok = (filter === "all" || p.dataset.cat === filter) && (!q || p.dataset.search.includes(q));
+        p.hidden = !ok; if (ok) shown++;
+      });
+      empty.hidden = shown > 0;
+      count.textContent = filter === "all" && !q ? "" : `Showing ${shown} of ${posts.length}`;
+    };
+    const setFilter = (f) => {
+      filter = f;
+      chips.forEach((c) => { const on = c.dataset.filter === f; c.classList.toggle("is-active", on); c.setAttribute("aria-pressed", String(on)); });
+      apply();
+    };
+    chips.forEach((c) => c.addEventListener("click", () => setFilter(c.dataset.filter)));
+    document.querySelectorAll("[data-filter-link]").forEach((a) => a.addEventListener("click", () => setFilter(a.dataset.filterLink)));
+    document.querySelectorAll("[data-filter-reset]").forEach((b) => b.addEventListener("click", () => { search.value = ""; setFilter("all"); }));
+    search.addEventListener("input", apply);
+  }
+
+  /* ---------- Article share buttons ---------- */
+  function initShare() {
+    const links = document.querySelectorAll("[data-share]");
+    if (!links.length) return;
+    const url = encodeURIComponent(location.href);
+    const title = encodeURIComponent(document.title);
+    const targets = {
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+      telegram: `https://t.me/share/url?url=${url}&text=${title}`,
+    };
+    const status = document.querySelector(".share-status");
+    links.forEach((l) => {
+      const kind = l.dataset.share;
+      if (targets[kind]) l.href = targets[kind];
+      if (kind === "copy") l.addEventListener("click", async () => {
+        try { await navigator.clipboard.writeText(location.href); status.textContent = "Link copied"; }
+        catch (e) { status.textContent = "Copy this page's address from your browser"; }
+        setTimeout(() => { status.textContent = ""; }, 2500);
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     const year = document.getElementById("year");
     if (year) year.textContent = new Date().getFullYear();
@@ -384,6 +438,8 @@
     initDecor();
     initForm();
     initChat();
+    initBlogFilter();
+    initShare();
     icons();
     if (!reduceMotion && document.getElementById("marketBody")) setInterval(tickPrices, 2200); // homepage only
   });
