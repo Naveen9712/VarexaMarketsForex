@@ -11,8 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="../../assets/favicon.png" />
   <meta name="theme-color" content="#0A1F1A" />
-  <link rel="stylesheet" href="../../style.css?v=7" />
-  <link rel="stylesheet" href="../style.css?v=7" />
+  <link rel="stylesheet" href="../../style.css?v=9" />
+  <link rel="stylesheet" href="../style.css?v=9" />
 </head>
 <body data-page="education">
   <!-- Risk warning bar (wording to be supplied by the client's compliance team) -->
@@ -25,29 +25,31 @@
   <!-- ===================== A. HEADER ===================== -->
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a href="../../" class="logo" aria-label="Varexa Markets home">
+      <a href="../../index.html" class="logo" aria-label="Varexa Markets home">
         <img class="logo-mark" src="../../assets/varexa-mark.png" width="52" height="34" alt="" />
         <span class="logo-text">Varexa<small>Markets</small></span>
       </a>
 
       <nav class="main-nav" id="mainNav" aria-label="Main">
         <ul>
-          <li><a href="../../" data-nav="home">Home</a></li>
-          <li><a href="../../about/" data-nav="about">About Us</a></li>
-          <li><a href="../../advantages/" data-nav="advantages">Our Advantages</a></li>
-          <li><a href="../../services/" data-nav="services">Services</a></li>
-          <li><a href="../../education/" data-nav="education">Education</a></li>
-          <li><a href="../../news/" data-nav="news">News</a></li>
+          <li><a href="../../index.html" data-nav="home">Home</a></li>
+          <li><a href="../../about/index.html" data-nav="about">About Us</a></li>
+          <li><a href="../../advantages/index.html" data-nav="advantages">Our Advantages</a></li>
+          <li><a href="../../index.html#markets" data-nav="markets">Markets</a></li>
+          <li><a href="../../index.html#platforms" data-nav="platforms">Trading Platforms</a></li>
+          <li><a href="../../services/index.html" data-nav="services">Services</a></li>
+          <li><a href="../../education/index.html" data-nav="education">Education</a></li>
+          <li><a href="../../news/index.html" data-nav="news">News</a></li>
         </ul>
         <div class="nav-actions-mobile">
-          <a href="../../#contact" class="btn btn-ghost-light">Log in</a>
-          <a href="../../register/" class="btn btn-gold">Sign up</a>
+          <a href="../../index.html#contact" class="btn btn-ghost-light">Log in</a>
+          <a href="../../register/index.html" class="btn btn-gold">Sign up</a>
         </div>
       </nav>
 
       <div class="header-actions">
-        <a href="../../#contact" class="btn btn-ghost-light btn-sm">Log in</a>
-        <a href="../../register/" class="btn btn-gold btn-sm">Sign up</a>
+        <a href="../../index.html#contact" class="btn btn-ghost-light btn-sm">Log in</a>
+        <a href="../../register/index.html" class="btn btn-gold btn-sm">Sign up</a>
       </div>
 
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
@@ -64,11 +66,11 @@
         <div class="hero-glow" aria-hidden="true"></div>
         <div class="container article-hero-inner">
           <ol class="breadcrumb" aria-label="Breadcrumb">
-            <li><a href="../../">Home</a></li>
-            <li><a href="../">Education</a></li>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Education</a></li>
             <li><span aria-current="page">Risk management</span></li>
           </ol>
-          <a class="post-cat post-cat-static" href="../#posts">Risk management</a>
+          <a class="post-cat post-cat-static" href="../index.html#posts">Risk management</a>
           <h1 id="article-title">Risk management essentials</h1>
           <p class="article-dek">Position sizing, stop-loss and take-profit orders, and simple rules that help protect your capital when markets move against you.</p>
           <div class="article-meta">
@@ -96,8 +98,8 @@
 <p>A stop-loss order closes your position automatically if price reaches a level you choose. Place it where your trade idea is proven wrong, not at a random distance. In fast or gapping markets, a standard stop can be filled at a worse price than requested.</p>
 <h2 id="sizing">Size the position from the stop</h2>
 <p>Once you know your maximum loss and the distance to your stop, you can work out your position size:</p>
-<p class="formula">Position size = Amount at risk ÃƒÂ· (Stop distance in pips Ãƒâ€” Pip value per lot)</p>
-<p>For example, risking 50 with a 25-pip stop on a pair where one standard lot is worth 10 per pip gives 50 ÃƒÂ· (25 Ãƒâ€” 10) = 0.2 lots.</p>
+<p class="formula">Position size = Amount at risk ÷ (Stop distance in pips × Pip value per lot)</p>
+<p>For example, risking 50 with a 25-pip stop on a pair where one standard lot is worth 10 per pip gives 50 ÷ (25 × 10) = 0.2 lots.</p>
 <h2 id="reward">Plan the reward</h2>
 <p>A take-profit order closes the trade at a target. Comparing the distance to your target with the distance to your stop gives the risk-to-reward ratio. A trade risking 25 pips to make 50 has a ratio of 1:2.</p>
 <h2 id="leverage">Respect leverage</h2>
@@ -127,14 +129,14 @@
           <div class="aside-cta">
             <h2>Put it into practice</h2>
             <p>Open an account and trade on MetaTrader 5.</p>
-            <a href="../../register/" class="btn btn-gold btn-sm btn-block">Open account</a>
+            <a href="../../register/index.html" class="btn btn-gold btn-sm btn-block">Open account</a>
           </div>
         </aside>
       </div>
 
       <nav class="container article-pager" aria-label="More lessons">
-        <a class="pager-link prev" href="../reading-candlestick-charts/"><small>Newer lesson</small><strong>Reading candlestick charts</strong></a>
-        <a class="pager-link next" href="../getting-started-with-metatrader-5/"><small>Older lesson</small><strong>Getting started with MetaTrader 5</strong></a>
+        <a class="pager-link prev" href="../reading-candlestick-charts/index.html"><small>Newer lesson</small><strong>Reading candlestick charts</strong></a>
+        <a class="pager-link next" href="../getting-started-with-metatrader-5/index.html"><small>Older lesson</small><strong>Getting started with MetaTrader 5</strong></a>
       </nav>
     </article>
 
@@ -143,43 +145,43 @@
       <div class="container">
         <div class="section-head split">
           <h2 id="related-title">More lessons</h2>
-          <a href="../" class="btn btn-dark">All lessons <i data-lucide="arrow-right"></i></a>
+          <a href="../index.html" class="btn btn-dark">All lessons <i data-lucide="arrow-right"></i></a>
         </div>
         <div class="post-grid">
           <article class="post-card" data-cat="beginners" data-search="forex trading fundamentals: pips, lots and leverage the building blocks of every forex trade explained in plain language: currency pairs, bid and ask prices, pips, lot sizes and how leverage works. beginners">
-            <a class="post-media" href="../forex-trading-fundamentals/" tabindex="-1" aria-hidden="true">
+            <a class="post-media" href="../forex-trading-fundamentals/index.html" tabindex="-1" aria-hidden="true">
               <img src="../../assets/blog/edu-forex-trading-fundamentals.jpg" alt="Illustration of an EUR/USD quote showing the sell and buy prices and one pip" width="720" height="450" loading="lazy" decoding="async" />
               <span class="post-cat">Beginners</span>
             </a>
             <div class="post-body">
               <div class="post-meta"><time datetime="2026-11-12">12 Nov 2026</time><span aria-hidden="true">&middot;</span><span>6 min read</span><span class="post-level">Beginner</span></div>
-              <h3 class="post-title"><a href="../forex-trading-fundamentals/">Forex trading fundamentals: pips, lots and leverage</a></h3>
+              <h3 class="post-title"><a href="../forex-trading-fundamentals/index.html">Forex trading fundamentals: pips, lots and leverage</a></h3>
               <p>The building blocks of every forex trade explained in plain language: currency pairs, bid and ask prices, pips, lot sizes and how leverage works.</p>
-              <a class="read-more" href="../forex-trading-fundamentals/">Read lesson <i data-lucide="arrow-right"></i></a>
+              <a class="read-more" href="../forex-trading-fundamentals/index.html">Read lesson <i data-lucide="arrow-right"></i></a>
             </div>
           </article>
           <article class="post-card" data-cat="technical-analysis" data-search="reading candlestick charts how to read open, high, low and close from a single candle, and what common patterns can tell you about buyers and sellers. technical analysis">
-            <a class="post-media" href="../reading-candlestick-charts/" tabindex="-1" aria-hidden="true">
+            <a class="post-media" href="../reading-candlestick-charts/index.html" tabindex="-1" aria-hidden="true">
               <img src="../../assets/blog/edu-reading-candlestick-charts.jpg" alt="Illustration of a bearish and a bullish candlestick labelled open, high, low and close" width="720" height="450" loading="lazy" decoding="async" />
               <span class="post-cat">Technical analysis</span>
             </a>
             <div class="post-body">
               <div class="post-meta"><time datetime="2026-11-09">9 Nov 2026</time><span aria-hidden="true">&middot;</span><span>5 min read</span><span class="post-level">Beginner</span></div>
-              <h3 class="post-title"><a href="../reading-candlestick-charts/">Reading candlestick charts</a></h3>
+              <h3 class="post-title"><a href="../reading-candlestick-charts/index.html">Reading candlestick charts</a></h3>
               <p>How to read open, high, low and close from a single candle, and what common patterns can tell you about buyers and sellers.</p>
-              <a class="read-more" href="../reading-candlestick-charts/">Read lesson <i data-lucide="arrow-right"></i></a>
+              <a class="read-more" href="../reading-candlestick-charts/index.html">Read lesson <i data-lucide="arrow-right"></i></a>
             </div>
           </article>
           <article class="post-card" data-cat="platform-guides" data-search="getting started with metatrader 5 a quick tour of metatrader 5: logging in, adding instruments to market watch, opening a chart and placing your first order on desktop or mobile. platform guides">
-            <a class="post-media" href="../getting-started-with-metatrader-5/" tabindex="-1" aria-hidden="true">
+            <a class="post-media" href="../getting-started-with-metatrader-5/index.html" tabindex="-1" aria-hidden="true">
               <img src="../../assets/blog/edu-getting-started-with-metatrader-5.jpg" alt="The MetaTrader 5 mobile app on two phones showing quotes and a chart" width="720" height="450" loading="lazy" decoding="async" />
               <span class="post-cat">Platform guides</span>
             </a>
             <div class="post-body">
               <div class="post-meta"><time datetime="2026-11-02">2 Nov 2026</time><span aria-hidden="true">&middot;</span><span>6 min read</span><span class="post-level">Beginner</span></div>
-              <h3 class="post-title"><a href="../getting-started-with-metatrader-5/">Getting started with MetaTrader 5</a></h3>
+              <h3 class="post-title"><a href="../getting-started-with-metatrader-5/index.html">Getting started with MetaTrader 5</a></h3>
               <p>A quick tour of MetaTrader 5: logging in, adding instruments to Market Watch, opening a chart and placing your first order on desktop or mobile.</p>
-              <a class="read-more" href="../getting-started-with-metatrader-5/">Read lesson <i data-lucide="arrow-right"></i></a>
+              <a class="read-more" href="../getting-started-with-metatrader-5/index.html">Read lesson <i data-lucide="arrow-right"></i></a>
             </div>
           </article>
         </div>
@@ -216,8 +218,8 @@
             <h2 id="cta-title">Ready to <span class="text-gold">trade?</span></h2>
             <p>Open a live account in minutes, or talk to our team about which account or service suits you.</p>
             <div class="cta-actions">
-              <a href="../../register/" class="btn btn-gold btn-lg">Open live account <i data-lucide="arrow-right"></i></a>
-              <a href="../../#contact" class="btn btn-outline-gold btn-lg"><i data-lucide="message-circle"></i> Talk to us</a>
+              <a href="../../register/index.html" class="btn btn-gold btn-lg">Open live account <i data-lucide="arrow-right"></i></a>
+              <a href="../../index.html#contact" class="btn btn-outline-gold btn-lg"><i data-lucide="message-circle"></i> Talk to us</a>
             </div>
           </div>
         </div>
@@ -230,8 +232,8 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="../../" class="footer-logo" aria-label="Varexa Markets home"><img src="../../assets/varexa-logo.png" width="190" height="142" alt="Varexa Markets" /></a>
-          <p>Varexa Markets offers access to forex and CFDs on metals, energies, indices and shares through MetaTrader 5. Varexa Markets Ltd is incorporated in Saint Lucia.</p>
+          <a href="../../index.html" class="footer-logo" aria-label="Varexa Markets home"><img src="../../assets/varexa-logo.png" width="190" height="142" alt="Varexa Markets" /></a>
+          <p>[Short company description and registered entity name to be provided by the client.]</p>
           <ul class="socials">
             <li><a href="#" aria-label="LinkedIn"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1v5.46h-4v-4.84c0-1.16-.02-2.64-1.61-2.64-1.61 0-1.86 1.26-1.86 2.56v4.92h-3.93v-11Z"/></svg></a></li>
             <li><a href="#" aria-label="Instagram"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6Zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Zm5-8.95a1.12 1.12 0 1 1 0 2.24 1.12 1.12 0 0 1 0-2.24ZM12 2.5c-2.58 0-2.9.01-3.92.06-3.47.16-5.36 2.08-5.52 5.52C2.51 9.1 2.5 9.42 2.5 12s.01 2.9.06 3.92c.16 3.44 2.05 5.36 5.52 5.52 1.02.05 1.34.06 3.92.06s2.9-.01 3.92-.06c3.44-.16 5.37-2.07 5.52-5.52.05-1.02.06-1.34.06-3.92s-.01-2.9-.06-3.92c-.15-3.43-2.07-5.36-5.52-5.52C14.9 2.51 14.58 2.5 12 2.5Zm0 1.71c2.54 0 2.84.01 3.84.06 2.58.12 3.78 1.34 3.9 3.9.05 1 .06 1.3.06 3.83s-.01 2.84-.06 3.84c-.12 2.55-1.32 3.78-3.9 3.9-1 .04-1.3.05-3.84.05s-2.84-.01-3.84-.05c-2.59-.12-3.78-1.35-3.9-3.9-.05-1-.06-1.3-.06-3.84s.01-2.83.06-3.83c.12-2.56 1.32-3.79 3.9-3.9 1-.05 1.3-.06 3.84-.06Z"/></svg></a></li>
@@ -243,30 +245,31 @@
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="../../about/">About us</a></li>
-            <li><a href="../../advantages/">Our advantages</a></li>
-            <li><a href="../../news/">News</a></li>
-            <li><a href="../../education/">Education</a></li>
-            <li><a href="../../#contact">Contact us</a></li>
+            <li><a href="../../about/index.html">About us</a></li>
+            <li><a href="../../advantages/index.html">Our advantages</a></li>
+            <li><a href="../../news/index.html">News</a></li>
+            <li><a href="../../education/index.html">Education</a></li>
+            <li><a href="../../index.html#contact">Contact us</a></li>
+            <li><a href="#">FAQs</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Markets</h4>
           <ul>
-            <li><a href="../../#markets">Forex</a></li>
-            <li><a href="../../#markets">Commodities</a></li>
-            <li><a href="../../#markets">Indices</a></li>
-            <li><a href="../../#markets">Stock CFDs</a></li>
-
-            <li><a href="../../markets/instruments/">Trading instruments</a></li></ul>
+            <li><a href="../../index.html#markets">Forex</a></li>
+            <li><a href="../../index.html#markets">Commodities</a></li>
+            <li><a href="../../index.html#markets">Indices</a></li>
+            <li><a href="../../index.html#markets">Stock CFDs</a></li>
+          </ul>
         </div>
         <div class="footer-col">
           <h4>Trading</h4>
           <ul>
-            <li><a href="../../services/#copy-trading">Copy trading</a></li>
-            <li><a href="../../services/#pamm">PAMM accounts</a></li>
-            <li><a href="../../services/#funded">Funded accounts</a></li>
-            <li><a href="../../services/#partners">Partners</a></li>
+            <li><a href="../../index.html#platforms">MetaTrader 5</a></li>
+            <li><a href="../../services/index.html#copy-trading">Copy trading</a></li>
+            <li><a href="../../services/index.html#pamm">PAMM accounts</a></li>
+            <li><a href="../../services/index.html#funded">Funded accounts</a></li>
+            <li><a href="../../services/index.html#partners">Partners</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -281,15 +284,14 @@
 
       <div class="footer-legal">
         <ul class="legal-links">
-          <li><a href="../../legal/privacy-policy/">Privacy Policy</a></li>
-          <li><a href="../../legal/terms-and-conditions/">Terms and Conditions</a></li>
-          <li><a href="../../legal/risk-disclosure/">Risk Disclosure</a></li>
-          <li><a href="../../legal/aml-policy/">AML Policy</a></li>
-          <li><a href="../../legal/client-agreement/">Client Agreement</a></li>
-          <li><a href="../../legal/order-execution-policy/">Order Execution Policy</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+          <li><a href="#">Risk Disclosure</a></li>
+          <li><a href="#">AML Policy</a></li>
           <li><a href="#">Cookie Policy</a></li>
         </ul>
-        <p class="legal-text"><strong>Risk warning:</strong> Trading leveraged products such as forex and CFDs carries a high level of risk and may not be suitable for all investors. You could lose more than your initial investment. [Full risk warning, regulatory details and restricted jurisdictions to be supplied by the client's compliance team.]</p>
+        <p class="legal-text"><strong>Risk warning:</strong> Trading leveraged forex and contracts for difference (CFDs) carries a high risk of loss and may not be suitable for all investors. Leverage can magnify losses, and you may lose all the funds in your trading account. If negative balance protection does not apply, losses may exceed your deposited funds. Please read our <a href="#">Risk Disclosure</a> before trading.</p>
+        <p class="legal-text"><strong>Company information and jurisdictional restrictions:</strong> Varexa Markets Ltd is incorporated in Saint Lucia. Varexa Markets does not offer services to residents of countries or jurisdictions where CFD trading is prohibited or where Varexa Markets is not permitted to offer those services. Account availability is subject to country restrictions and client eligibility.</p>
         <p class="copyright">&copy; <span id="year">2026</span> Varexa Markets. All rights reserved.</p>
       </div>
     </div>

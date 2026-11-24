@@ -3,30 +3,81 @@
    Page-only styles. Shared styles (tokens, header, footer,
    buttons, page hero, cards, tables) come from ../style.css.
    ========================================================= */
+
+/* ---------- Hero key facts ---------- */
+.hero-facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.hero-facts li {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: var(--r-pill);
+  font-size: 0.9rem; font-weight: 600; color: #E4ECE7;
+  background: rgba(255, 255, 255, .04); border: 1px solid rgba(227, 192, 120, .22);
+}
+.hero-facts svg { width: 16px; height: 16px; color: var(--gold); stroke-width: 1.9; }
+
 /* ---------- At-a-glance card (dark) ---------- */
-.glance-card { background: linear-gradient(160deg, #15402F 0%, var(--ink) 100%); color: var(--white); border: 1px solid rgba(227, 192, 120, .2); border-radius: var(--r-xl); padding: 34px; box-shadow: 0 30px 60px -36px rgba(11, 31, 26, .6); }
-.glance-card h3 { font-size: 1.25rem; margin-bottom: 18px; }
-.glance-card dl { margin: 0; }
-.glance-card dl div { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 14px 0; border-top: 1px solid rgba(227, 192, 120, .14); }
-.glance-card dt { color: var(--muted-dark); font-size: 0.92rem; flex-shrink: 0; }
-.glance-card dd { margin: 0; font-weight: 600; text-align: right; }
+.glance-card {
+  background: linear-gradient(160deg, #15402F 0%, var(--ink) 100%); color: var(--white);
+  border: 1px solid rgba(227, 192, 120, .2); border-radius: var(--r-xl); padding: 14px 30px;
+  box-shadow: 0 30px 60px -36px rgba(11, 31, 26, .6);
+}
+.glance-card dl, .support-card dl { margin: 0; }
+.glance-card dl > div, .support-card dl > div {
+  display: grid; grid-template-columns: 42px minmax(0, 1fr); column-gap: 16px; row-gap: 3px; align-items: start;
+  padding: 18px 0;
+}
+.glance-card dl > div + div, .support-card dl > div + div { border-top: 1px solid rgba(227, 192, 120, .14); }
+.glance-ic {
+  grid-row: span 2; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px;
+  background: rgba(227, 192, 120, .1); border: 1px solid rgba(227, 192, 120, .22); color: var(--gold);
+}
+.glance-ic svg { width: 19px; height: 19px; stroke-width: 1.8; }
+.glance-card dt, .support-card dt { font-size: 0.76rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-dark); }
+.glance-card dd, .support-card dd { margin: 0; font-weight: 600; line-height: 1.5; }
 
 /* ---------- Mission & vision ---------- */
 .mv-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-.mv-card { position: relative; overflow: hidden; border-radius: var(--r-xl); padding: 40px; background: var(--card); border: 1px solid var(--line); }
+.mv-card { position: relative; overflow: hidden; border-radius: var(--r-xl); padding: 44px; background: var(--card); border: 1px solid var(--line); }
 .mv-card-dark { background: linear-gradient(160deg, #15402F 0%, var(--ink) 100%); border-color: rgba(227, 192, 120, .2); color: var(--white); }
-.mv-card .ic-tile { margin-bottom: 24px; }
+.mv-card .ic-tile { margin-bottom: 26px; }
 .mv-card-dark .ic-tile { background: var(--gold-gradient); color: var(--gold-ink); }
-.mv-card h3 { font-size: clamp(1.4rem, 2.2vw, 1.75rem); margin-bottom: 14px; }
-.mv-card p { color: var(--muted); font-size: 1.03rem; line-height: 1.7; }
+.mv-card h2 { font-size: clamp(1.5rem, 2.4vw, 2rem); margin-bottom: 16px; }
+.mv-card p { color: var(--muted); font-size: 1.03rem; line-height: 1.75; }
 .mv-card-dark p { color: var(--muted-dark); }
-.mv-label { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 10px; }
-.mv-card-dark .mv-label { color: var(--gold-light); }
-.objectives { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 2fr); gap: 32px; align-items: start; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-xl); padding: 36px 40px; }
-.objectives h3 { font-size: 1.35rem; }
-.objectives .tick-list { margin-bottom: 0; }
+.mv-label { display: block; font-family: var(--font-display); font-size: 0.78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 10px; }
+.mv-card-dark .mv-label, .support-card .mv-label { color: var(--gold-light); }
 
-/* ---------- Team ---------- */
+/* ---------- Objectives ---------- */
+.objective-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; counter-reset: obj; }
+.objective-card {
+  position: relative; counter-increment: obj; padding: 30px 28px 28px; border-radius: var(--r-lg);
+  background: var(--card); border: 1px solid var(--line);
+  transition: border-color .25s, box-shadow .25s, transform .25s;
+}
+.objective-card:hover { border-color: rgba(227, 192, 120, .55); box-shadow: 0 24px 48px -30px rgba(11, 31, 26, .35); transform: translateY(-3px); }
+.objective-card::after {
+  content: counter(obj, decimal-leading-zero); position: absolute; top: 26px; right: 28px;
+  font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; letter-spacing: -.04em; line-height: 1;
+  background: var(--gold-btn); -webkit-background-clip: text; background-clip: text; color: transparent; opacity: .85;
+}
+.objective-card p { font-size: 1.02rem; font-weight: 500; line-height: 1.65; color: var(--text); }
+
+/* ---------- Our approach + support card ---------- */
+.approach-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.support-card {
+  background: var(--ink-2); border: 1px solid var(--line-dark); border-radius: var(--r-xl); padding: 32px;
+  box-shadow: 0 30px 60px -40px rgba(0, 0, 0, .6);
+}
+.support-card h3.mv-label { margin-bottom: 6px; }
+.support-card dd { color: var(--white); }
+.support-card dd small { display: block; margin-top: 2px; font-size: 0.9rem; font-weight: 500; color: var(--muted-dark); }
+.support-card .btn { margin-top: 14px; width: 100%; justify-content: center; }
+
+/* ---------- Security and transparency ---------- */
+.trust-grid .info-card p { margin-bottom: 4px; }
+.trust-grid .link svg { transition: transform .2s; }
+.trust-grid .link:hover svg { transform: translateX(3px); }
+.info-card-risk .ic-tile { background: rgba(240, 82, 91, .1); color: var(--down); }
+
+/* ---------- Team (hidden for now) ---------- */
 .team-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .team-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 14px 14px 24px; }
 .team-photo {
@@ -39,54 +90,24 @@
 .team-role { display: block; margin: 0 10px 12px; font-size: 0.9rem; }
 .team-card p { margin: 0 10px; color: var(--muted); font-size: 0.92rem; }
 
-/* ---------- Numbered reasons (Why choose us) ---------- */
-.reason-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; counter-reset: reason; }
-.reason { display: grid; grid-template-columns: 64px 1fr; gap: 18px; padding: 28px 0; border-top: 1px solid var(--line); counter-increment: reason; }
-.reason::before { content: counter(reason, decimal-leading-zero); font-family: var(--font-display); font-size: 2.1rem; font-weight: 800; letter-spacing: -.04em; line-height: 1; background: var(--gold-btn); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.reason h3 { margin-bottom: 6px; }
-.reason p { color: var(--muted); font-size: 0.96rem; }
-
-/* ---------- Testimonials ---------- */
-.testimonial-card { margin: 0; display: flex; flex-direction: column; gap: 22px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 30px; }
-.testimonial-card > svg { width: 34px; height: 34px; color: var(--gold); fill: rgba(227, 192, 120, .2); }
-.testimonial-card blockquote { margin: 0; font-size: 1.04rem; line-height: 1.7; color: var(--text); }
-.testimonial-card figcaption { display: flex; align-items: center; gap: 12px; margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); font-size: 0.92rem; }
-.avatar { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--green-solid); color: var(--gold); flex-shrink: 0; }
-.avatar svg { width: 20px; height: 20px; }
-.testimonial-card figcaption small { display: block; margin-top: 4px; color: var(--muted); }
-
-/* ---------- Timeline (achievements) ---------- */
-.timeline { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-bottom: 56px; }
-.timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 9px; height: 2px; background: linear-gradient(90deg, rgba(227, 192, 120, .7), rgba(227, 192, 120, .1)); }
-.tl-item { position: relative; padding-top: 40px; }
-.tl-item::before { content: ""; position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--gold-gradient); box-shadow: 0 0 0 6px rgba(227, 192, 120, .14); }
-.tl-year { display: inline-block; font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; margin-bottom: 10px; }
-.tl-item h3 { font-size: 1.05rem; margin-bottom: 6px; }
-.tl-item p { color: var(--muted-dark); font-size: 0.92rem; }
-.cred-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-.cred-card { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 24px; border-radius: var(--r-lg); border: 1px dashed rgba(227, 192, 120, .4); background: rgba(227, 192, 120, .04); }
-.cred-card svg { width: 28px; height: 28px; color: var(--gold); stroke-width: 1.6; }
-.cred-card h3 { font-size: 1rem; }
-.cred-card p { color: var(--muted-dark); font-size: 0.9rem; }
-
-
 /* ---------- Responsive ---------- */
 @media (max-width: 1180px) {
-  .cred-grid, .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 1080px) {
-  .objectives { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 36px; }
-  .timeline::before { display: none; }
+  .objective-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 680px) {
-  .cred-grid, .mv-grid, .reason-grid { grid-template-columns: minmax(0, 1fr); }
+  .mv-grid, .objective-grid { grid-template-columns: minmax(0, 1fr); }
+  .mv-card, .support-card { padding: 28px 22px; border-radius: var(--r-lg); }
+  .glance-card { padding: 6px 20px; border-radius: var(--r-lg); }
+  .glance-card dl > div, .support-card dl > div { grid-template-columns: 38px minmax(0, 1fr); column-gap: 14px; padding: 16px 0; }
+  .glance-ic { width: 38px; height: 38px; border-radius: 10px; }
+  .objective-card { padding: 24px 22px; }
+  .objective-card::after { top: 22px; right: 22px; font-size: 1.35rem; }
+  .approach-actions .btn { flex: 1 1 100%; justify-content: center; }
   .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .team-card { padding: 10px 10px 18px; }
   .team-card h3, .team-role, .team-card p { margin-left: 4px; margin-right: 4px; }
   .team-photo svg { width: 52px; height: 52px; }
-  .mv-card, .objectives, .glance-card { padding: 26px 22px; border-radius: var(--r-lg); }
-  .timeline { grid-template-columns: 1fr; padding-left: 0; }
-  .reason { grid-template-columns: 52px 1fr; padding: 22px 0; }
-  .reason::before { font-size: 1.7rem; }
 }

@@ -698,6 +698,8 @@ p { margin: 0; }
 .legal-links a:hover { color: var(--gold); }
 .legal-text { font-size: 0.8rem; color: #7f978d; line-height: 1.7; max-width: 110ch; }
 .legal-text strong { color: #cddbd4; }
+.legal-text a { color: #cddbd4; text-decoration: underline; text-underline-offset: 2px; }
+.legal-text a:hover { color: var(--gold); }
 .copyright { font-size: 0.82rem; color: #6f877d; }
 
 /* =========================================================
@@ -894,12 +896,6 @@ p { margin: 0; }
 .prose h2 { margin-bottom: 18px; }
 .prose p { color: var(--muted); font-size: 1.03rem; line-height: 1.7; margin-bottom: 16px; }
 .prose p:last-child { margin-bottom: 0; }
-.terms-notice { max-width: 900px; margin: 0 auto 24px; padding: 16px 20px; border: 1px solid rgba(185, 143, 74, .45); border-radius: var(--r-md); background: rgba(227, 192, 120, .16); color: var(--text); line-height: 1.6; }
-.terms-document { max-width: 900px; margin: 0 auto; }
-.terms-meta { display: flex; flex-wrap: wrap; gap: 8px 24px; padding: 16px 0 22px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .92rem; }
-.terms-document section { padding-top: 30px; margin-top: 28px; border-top: 1px solid var(--line); scroll-margin-top: calc(var(--header-h) + 16px); }
-.terms-document section h2 { margin: 0 0 14px; font-size: clamp(1.35rem, 2.2vw, 1.7rem); }
-.terms-document section p { margin: 0; }
 .section-ink .prose p { color: var(--muted-dark); }
 .block-title { font-size: 0.78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-text); margin: 36px 0 14px; }
 .block-title:first-child { margin-top: 0; }

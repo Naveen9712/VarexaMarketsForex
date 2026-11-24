@@ -11,8 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="../assets/favicon.png" />
   <meta name="theme-color" content="#0A1F1A" />
-  <link rel="stylesheet" href="../style.css?v=7" />
-  <link rel="stylesheet" href="style.css?v=7" />
+  <link rel="stylesheet" href="../style.css?v=9" />
+  <link rel="stylesheet" href="style.css?v=9" />
 </head>
 <body data-page="register">
   <!-- Risk warning bar (wording to be supplied by the client's compliance team) -->
@@ -25,29 +25,31 @@
   <!-- ===================== A. HEADER ===================== -->
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a href="../" class="logo" aria-label="Varexa Markets home">
+      <a href="../index.html" class="logo" aria-label="Varexa Markets home">
         <img class="logo-mark" src="../assets/varexa-mark.png" width="52" height="34" alt="" />
         <span class="logo-text">Varexa<small>Markets</small></span>
       </a>
 
       <nav class="main-nav" id="mainNav" aria-label="Main">
         <ul>
-          <li><a href="../" data-nav="home">Home</a></li>
-          <li><a href="../about/" data-nav="about">About Us</a></li>
-          <li><a href="../advantages/" data-nav="advantages">Our Advantages</a></li>
-          <li><a href="../services/" data-nav="services">Services</a></li>
-          <li><a href="../education/" data-nav="education">Education</a></li>
-          <li><a href="../news/" data-nav="news">News</a></li>
+          <li><a href="../index.html" data-nav="home">Home</a></li>
+          <li><a href="../about/index.html" data-nav="about">About Us</a></li>
+          <li><a href="../advantages/index.html" data-nav="advantages">Our Advantages</a></li>
+          <li><a href="../index.html#markets" data-nav="markets">Markets</a></li>
+          <li><a href="../index.html#platforms" data-nav="platforms">Trading Platforms</a></li>
+          <li><a href="../services/index.html" data-nav="services">Services</a></li>
+          <li><a href="../education/index.html" data-nav="education">Education</a></li>
+          <li><a href="../news/index.html" data-nav="news">News</a></li>
         </ul>
         <div class="nav-actions-mobile">
-          <a href="../#contact" class="btn btn-ghost-light">Log in</a>
-          <a href="../register/" class="btn btn-gold">Sign up</a>
+          <a href="../index.html#contact" class="btn btn-ghost-light">Log in</a>
+          <a href="../register/index.html" class="btn btn-gold">Sign up</a>
         </div>
       </nav>
 
       <div class="header-actions">
-        <a href="../#contact" class="btn btn-ghost-light btn-sm">Log in</a>
-        <a href="../register/" class="btn btn-gold btn-sm">Sign up</a>
+        <a href="../index.html#contact" class="btn btn-ghost-light btn-sm">Log in</a>
+        <a href="../register/index.html" class="btn btn-gold btn-sm">Sign up</a>
       </div>
 
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
@@ -65,7 +67,7 @@
         <!-- Left: intro + step list -->
         <aside class="reg-aside">
           <ol class="breadcrumb" aria-label="Breadcrumb">
-            <li><a href="../">Home</a></li>
+            <li><a href="../index.html">Home</a></li>
             <li><span aria-current="page">Open an account</span></li>
           </ol>
           <span class="eyebrow eyebrow-dark">Account registration</span>
@@ -86,7 +88,7 @@
             <p><strong>Need help?</strong> Our team can guide you through registration.</p>
             <button type="button" class="btn btn-outline-gold btn-sm" data-open-chat>Live chat</button>
           </div>
-          <p class="reg-login">Already registered? <a href="../#contact">Contact support to log in</a></p>
+          <p class="reg-login">Already registered? <a href="../index.html#contact">Contact support to log in</a></p>
         </aside>
 
         <!-- Right: form -->
@@ -232,7 +234,7 @@
                   <select name="phoneCode" aria-label="Country code" required data-dialcodes><option value="">Code</option></select>
                   <input type="tel" name="phone" autocomplete="tel-national" inputmode="tel" aria-labelledby="phoneLabel" required data-rule="phone" />
                 </div>
-                <em class="err">Please select a country code and enter a valid number (6Ã¢â‚¬â€œ14 digits).</em>
+                <em class="err">Please select a country code and enter a valid number (6–14 digits).</em>
               </div>
 
               <label class="field">
@@ -301,14 +303,14 @@
                 <label class="field">
                   <span>Annual income (USD)</span>
                   <select name="income" required>
-                    <option value="">Select</option><option>Under 25,000</option><option>25,000 Ã¢â‚¬â€œ 50,000</option><option>50,000 Ã¢â‚¬â€œ 100,000</option><option>100,000 Ã¢â‚¬â€œ 250,000</option><option>Over 250,000</option>
+                    <option value="">Select</option><option>Under 25,000</option><option>25,000 – 50,000</option><option>50,000 – 100,000</option><option>100,000 – 250,000</option><option>Over 250,000</option>
                   </select>
                   <em class="err">Please select an income range.</em>
                 </label>
                 <label class="field">
                   <span>Net worth excluding home (USD)</span>
                   <select name="netWorth" required>
-                    <option value="">Select</option><option>Under 25,000</option><option>25,000 Ã¢â‚¬â€œ 100,000</option><option>100,000 Ã¢â‚¬â€œ 500,000</option><option>500,000 Ã¢â‚¬â€œ 1,000,000</option><option>Over 1,000,000</option>
+                    <option value="">Select</option><option>Under 25,000</option><option>25,000 – 100,000</option><option>100,000 – 500,000</option><option>500,000 – 1,000,000</option><option>Over 1,000,000</option>
                   </select>
                   <em class="err">Please select a net worth range.</em>
                 </label>
@@ -319,7 +321,7 @@
                 <div class="seg" role="radiogroup" aria-labelledby="expLabel">
                   <label><input type="radio" name="experience" value="None" required /><span>None</span></label>
                   <label><input type="radio" name="experience" value="Less than 1 year" /><span>Under 1 year</span></label>
-                  <label><input type="radio" name="experience" value="1Ã¢â‚¬â€œ3 years" /><span>1Ã¢â‚¬â€œ3 years</span></label>
+                  <label><input type="radio" name="experience" value="1–3 years" /><span>1–3 years</span></label>
                   <label><input type="radio" name="experience" value="More than 3 years" /><span>3+ years</span></label>
                 </div>
                 <em class="err group-err" data-for="experience">Please choose your experience level.</em>
@@ -381,15 +383,15 @@
               <div class="agree-list">
                 <label class="agree">
                   <input type="checkbox" name="agreeTerms" required />
-                  <span>I have read and accept the <a href="../legal/client-agreement/">Client Agreement</a> and <a href="../legal/terms-and-conditions/">Terms and Conditions</a>.</span>
+                  <span>I have read and accept the <a href="#">Client Agreement</a> and <a href="#">Terms and Conditions</a>.</span>
                 </label>
                 <label class="agree">
                   <input type="checkbox" name="agreePrivacy" required />
-                  <span>I have read the <a href="../legal/privacy-policy/">Privacy Policy</a> and agree to my information being used to process this registration.</span>
+                  <span>I have read the <a href="#">Privacy Policy</a> and agree to my information being used to process this registration.</span>
                 </label>
                 <label class="agree">
                   <input type="checkbox" name="agreeRisk" required />
-                  <span>I understand the <a href="../legal/risk-disclosure/">Risk Disclosure</a>: trading forex and CFDs on margin carries a high level of risk and I could lose more than my initial investment.</span>
+                  <span>I understand the <a href="#">Risk Disclosure</a>: trading forex and CFDs on margin carries a high level of risk and I could lose more than my initial investment.</span>
                 </label>
                 <label class="agree optional">
                   <input type="checkbox" name="marketing" />
@@ -421,8 +423,8 @@
             <p>All steps are complete. Once this form is connected to a secure backend, details like these would go to the Varexa Markets team to finish opening the account.</p>
             <p class="reg-proto"><i data-lucide="info"></i> This is a design prototype. No information was sent, stored or emailed.</p>
             <div class="reg-done-actions">
-              <a href="../" class="btn btn-gold">Back to homepage</a>
-              <a href="../education/" class="btn btn-outline-dark">Start learning</a>
+              <a href="../index.html" class="btn btn-gold">Back to homepage</a>
+              <a href="../education/index.html" class="btn btn-outline-dark">Start learning</a>
             </div>
           </div>
         </div>
@@ -435,8 +437,8 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="../" class="footer-logo" aria-label="Varexa Markets home"><img src="../assets/varexa-logo.png" width="190" height="142" alt="Varexa Markets" /></a>
-          <p>Varexa Markets offers access to forex and CFDs on metals, energies, indices and shares through MetaTrader 5. Varexa Markets Ltd is incorporated in Saint Lucia.</p>
+          <a href="../index.html" class="footer-logo" aria-label="Varexa Markets home"><img src="../assets/varexa-logo.png" width="190" height="142" alt="Varexa Markets" /></a>
+          <p>[Short company description and registered entity name to be provided by the client.]</p>
           <ul class="socials">
             <li><a href="#" aria-label="LinkedIn"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1v5.46h-4v-4.84c0-1.16-.02-2.64-1.61-2.64-1.61 0-1.86 1.26-1.86 2.56v4.92h-3.93v-11Z"/></svg></a></li>
             <li><a href="#" aria-label="Instagram"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6Zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Zm5-8.95a1.12 1.12 0 1 1 0 2.24 1.12 1.12 0 0 1 0-2.24ZM12 2.5c-2.58 0-2.9.01-3.92.06-3.47.16-5.36 2.08-5.52 5.52C2.51 9.1 2.5 9.42 2.5 12s.01 2.9.06 3.92c.16 3.44 2.05 5.36 5.52 5.52 1.02.05 1.34.06 3.92.06s2.9-.01 3.92-.06c3.44-.16 5.37-2.07 5.52-5.52.05-1.02.06-1.34.06-3.92s-.01-2.9-.06-3.92c-.15-3.43-2.07-5.36-5.52-5.52C14.9 2.51 14.58 2.5 12 2.5Zm0 1.71c2.54 0 2.84.01 3.84.06 2.58.12 3.78 1.34 3.9 3.9.05 1 .06 1.3.06 3.83s-.01 2.84-.06 3.84c-.12 2.55-1.32 3.78-3.9 3.9-1 .04-1.3.05-3.84.05s-2.84-.01-3.84-.05c-2.59-.12-3.78-1.35-3.9-3.9-.05-1-.06-1.3-.06-3.84s.01-2.83.06-3.83c.12-2.56 1.32-3.79 3.9-3.9 1-.05 1.3-.06 3.84-.06Z"/></svg></a></li>
@@ -448,30 +450,31 @@
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="../about/">About us</a></li>
-            <li><a href="../advantages/">Our advantages</a></li>
-            <li><a href="../news/">News</a></li>
-            <li><a href="../education/">Education</a></li>
-            <li><a href="../#contact">Contact us</a></li>
+            <li><a href="../about/index.html">About us</a></li>
+            <li><a href="../advantages/index.html">Our advantages</a></li>
+            <li><a href="../news/index.html">News</a></li>
+            <li><a href="../education/index.html">Education</a></li>
+            <li><a href="../index.html#contact">Contact us</a></li>
+            <li><a href="#">FAQs</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Markets</h4>
           <ul>
-            <li><a href="../#markets">Forex</a></li>
-            <li><a href="../#markets">Commodities</a></li>
-            <li><a href="../#markets">Indices</a></li>
-            <li><a href="../#markets">Stock CFDs</a></li>
-
-            <li><a href="../markets/instruments/">Trading instruments</a></li></ul>
+            <li><a href="../index.html#markets">Forex</a></li>
+            <li><a href="../index.html#markets">Commodities</a></li>
+            <li><a href="../index.html#markets">Indices</a></li>
+            <li><a href="../index.html#markets">Stock CFDs</a></li>
+          </ul>
         </div>
         <div class="footer-col">
           <h4>Trading</h4>
           <ul>
-            <li><a href="../services/#copy-trading">Copy trading</a></li>
-            <li><a href="../services/#pamm">PAMM accounts</a></li>
-            <li><a href="../services/#funded">Funded accounts</a></li>
-            <li><a href="../services/#partners">Partners</a></li>
+            <li><a href="../index.html#platforms">MetaTrader 5</a></li>
+            <li><a href="../services/index.html#copy-trading">Copy trading</a></li>
+            <li><a href="../services/index.html#pamm">PAMM accounts</a></li>
+            <li><a href="../services/index.html#funded">Funded accounts</a></li>
+            <li><a href="../services/index.html#partners">Partners</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -486,15 +489,14 @@
 
       <div class="footer-legal">
         <ul class="legal-links">
-          <li><a href="../legal/privacy-policy/">Privacy Policy</a></li>
-          <li><a href="../legal/terms-and-conditions/">Terms and Conditions</a></li>
-          <li><a href="../legal/risk-disclosure/">Risk Disclosure</a></li>
-          <li><a href="../legal/aml-policy/">AML Policy</a></li>
-          <li><a href="../legal/client-agreement/">Client Agreement</a></li>
-          <li><a href="../legal/order-execution-policy/">Order Execution Policy</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+          <li><a href="#">Risk Disclosure</a></li>
+          <li><a href="#">AML Policy</a></li>
           <li><a href="#">Cookie Policy</a></li>
         </ul>
-        <p class="legal-text"><strong>Risk warning:</strong> Trading leveraged products such as forex and CFDs carries a high level of risk and may not be suitable for all investors. You could lose more than your initial investment. [Full risk warning, regulatory details and restricted jurisdictions to be supplied by the client's compliance team.]</p>
+        <p class="legal-text"><strong>Risk warning:</strong> Trading leveraged forex and contracts for difference (CFDs) carries a high risk of loss and may not be suitable for all investors. Leverage can magnify losses, and you may lose all the funds in your trading account. If negative balance protection does not apply, losses may exceed your deposited funds. Please read our <a href="#">Risk Disclosure</a> before trading.</p>
+        <p class="legal-text"><strong>Company information and jurisdictional restrictions:</strong> Varexa Markets Ltd is incorporated in Saint Lucia. Varexa Markets does not offer services to residents of countries or jurisdictions where CFD trading is prohibited or where Varexa Markets is not permitted to offer those services. Account availability is subject to country restrictions and client eligibility.</p>
         <p class="copyright">&copy; <span id="year">2026</span> Varexa Markets. All rights reserved.</p>
       </div>
     </div>
