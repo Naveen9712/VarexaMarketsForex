@@ -1,0 +1,8 @@
+/* =========================================================
+   News section (news/index.html + article pages)
+   Page-only styles. Shared blog styles (cards, filters,
+   article layout) come from ../style.css.
+   ========================================================= */
+/* Darken photos slightly at the bottom so the category chip and cards read as one */
+.page-news .post-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 31, 26, 0) 55%, rgba(10, 31, 26, .4) 100%); pointer-events: none; }
+.page-news .article-sample { background: rgba(227, 192, 120, .12); }

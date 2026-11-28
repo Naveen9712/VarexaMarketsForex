@@ -1,0 +1,27 @@
+# Render Blueprint: one Node web service that serves the website and /api/quotes.
+# The API key is NOT stored here. "sync: false" makes Render ask for it
+# when the Blueprint is first created; afterwards change it in
+# Render > your service > Environment.
+services:
+  - type: web
+    name: varexa-markets
+    runtime: node
+    plan: starter            # "free" also works, but free services sleep when idle (prices then reload on the next visit)
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: TWELVE_DATA_API_KEY
+        sync: false
+      - key: NODE_VERSION
+        value: "22"
+      # Basic (free) Twelve Data plan limits. On a paid plan set the
+      # per-minute value to your plan's credits and TD_DAILY_CREDITS to 0.
+      - key: TD_CREDITS_PER_MINUTE
+        value: "8"
+      - key: TD_DAILY_CREDITS
+        value: "800"
+      - key: TD_MIN_REFRESH_SECONDS
+        value: "60"
+      - key: TD_CLOSED_REFRESH_SECONDS
+        value: "3600"

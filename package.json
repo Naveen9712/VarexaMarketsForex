@@ -1,0 +1,20 @@
+{
+  "name": "varexa-markets-website",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Varexa Markets website with a Twelve Data price proxy (/api/quotes).",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "check:symbols": "node scripts/check-symbols.js",
+    "mock": "node test/mock-twelvedata.js",
+    "test": "node --test test/*.test.js",
+    "dev": "node --env-file=.env server/server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "4.21.2"
+  }
+}

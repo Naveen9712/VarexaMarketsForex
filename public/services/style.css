@@ -1,0 +1,44 @@
+/* =========================================================
+   Services page (services/index.html)
+   Page-only styles. Shared styles (tokens, header, footer,
+   buttons, page hero, cards, tables) come from ../style.css.
+   ========================================================= */
+/* ---------- Service jump cards + service detail ---------- */
+.jump-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.jump-card { display: flex; flex-direction: column; gap: 10px; padding: 24px; border-radius: var(--r-lg); background: var(--card); border: 1px solid var(--line); transition: border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease); }
+.jump-card:hover { border-color: rgba(227, 192, 120, .55); transform: translateY(-3px); box-shadow: 0 24px 48px -30px rgba(11, 31, 26, .35); }
+.jump-card .ic-tile { margin-bottom: 8px; }
+.jump-card p { color: var(--muted); font-size: 0.92rem; }
+.jump-card .read-more { margin-top: auto; }
+.jump-card .read-more svg { transform: rotate(90deg); }
+.jump-card:hover .read-more svg { transform: rotate(90deg) translateX(3px); }
+
+.svc-detail { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 64px; align-items: start; }
+.svc-intro { position: sticky; top: calc(var(--header-h) + 32px); }
+.svc-num { display: block; font-family: var(--font-display); font-size: 0.9rem; font-weight: 800; letter-spacing: .12em; color: var(--gold-text); margin-bottom: 14px; }
+.svc-intro h2 { margin-bottom: 16px; }
+.svc-intro > p { color: var(--muted); font-size: 1.04rem; line-height: 1.7; }
+.svc-intro .svc-tags { border-bottom: 0; padding-bottom: 0; margin: 22px 0 28px; }
+.svc-body { display: grid; gap: 0; }
+.flow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; counter-reset: flow; }
+.flow li { position: relative; counter-increment: flow; padding: 20px 20px 20px 66px; border-radius: var(--r-md); background: var(--card); border: 1px solid var(--line); }
+.flow li::before { content: counter(flow); position: absolute; left: 20px; top: 18px; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: var(--green-solid); color: var(--gold); font-weight: 800; font-size: 0.95rem; }
+.flow strong { display: block; margin-bottom: 4px; }
+.flow span { color: var(--muted); font-size: 0.9rem; line-height: 1.55; display: block; }
+.svc-body .data-table-wrap { box-shadow: none; }
+.svc-body .data-table { min-width: 0; }
+.svc-body .callout { margin-top: 0; }
+
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1180px) {
+  .jump-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 1080px) {
+  .svc-detail { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .svc-intro { position: static; }
+}
+@media (max-width: 680px) {
+  .jump-grid, .flow { grid-template-columns: minmax(0, 1fr); }
+  .flow li { padding: 18px 18px 18px 62px; }
+}

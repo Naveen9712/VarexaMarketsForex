@@ -1,9 +1,11 @@
 /* =========================================================
-   Varexa Markets — Forex & CFD homepage prototype
-   All market data in this file is ILLUSTRATIVE SAMPLE DATA.
-   Replace the INSTRUMENTS list and the generators with a real
-   price feed (e.g. a TradingView widget or a licensed data API)
-   for production.
+   Varexa Markets — website scripts
+   Market prices come from the site's own server (/api/quotes),
+   which fetches them from Twelve Data. The Twelve Data API key
+   lives only on the server (Render environment variable) and is
+   never sent to the browser.
+   The candle charts inside the device mockups and the About card
+   remain decorative illustrations, not market data.
    ========================================================= */
 (function () {
   "use strict";
@@ -11,26 +13,28 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const COLORS = { up: "#27c77a", down: "#f0525b", gold: "#E3C078", grid: "rgba(227, 192, 120,0.08)", text: "#9fbab0", ink: "#0A1F1A" };
 
-  /* ---------- Sample instruments ---------- */
+  /* ---------- Instruments (display details) ----------
+     Twelve Data symbols are mapped on the server in server/instruments.js.
+     dp = decimal places shown. */
   const INSTRUMENTS = [
-    { id: "eurusd", sym: "EUR/USD", name: "Euro / US Dollar", cat: "forex", badge: "sym-fx", mark: "€$", price: 1.0862, dp: 4, chg: 0.21, spread: 0.0001 },
-    { id: "gbpusd", sym: "GBP/USD", name: "British Pound / US Dollar", cat: "forex", badge: "sym-fx", mark: "£$", price: 1.2934, dp: 4, chg: 0.36, spread: 0.0001 },
-    { id: "usdjpy", sym: "USD/JPY", name: "US Dollar / Japanese Yen", cat: "forex", badge: "sym-fx", mark: "$¥", price: 149.82, dp: 2, chg: -0.18, spread: 0.01 },
-    { id: "audusd", sym: "AUD/USD", name: "Australian Dollar / US Dollar", cat: "forex", badge: "sym-fx", mark: "A$", price: 0.6571, dp: 4, chg: -0.27, spread: 0.0001 },
-    { id: "usdchf", sym: "USD/CHF", name: "US Dollar / Swiss Franc", cat: "forex", badge: "sym-fx", mark: "$₣", price: 0.8823, dp: 4, chg: 0.09, spread: 0.0002 },
-    { id: "xauusd", sym: "XAU/USD", name: "Gold / US Dollar", cat: "metals", badge: "sym-gold", mark: "Au", price: 3912.4, dp: 2, chg: 0.84, spread: 0.44 },
-    { id: "xagusd", sym: "XAG/USD", name: "Silver / US Dollar", cat: "metals", badge: "sym-silver", mark: "Ag", price: 47.85, dp: 2, chg: 1.12, spread: 0.03 },
-    { id: "wti", sym: "WTI", name: "US Crude Oil", cat: "energy", badge: "sym-energy", mark: "OIL", price: 68.42, dp: 2, chg: -0.65, spread: 0.03 },
-    { id: "brent", sym: "Brent", name: "UK Brent Oil", cat: "energy", badge: "sym-energy", mark: "BR", price: 72.1, dp: 2, chg: -0.48, spread: 0.03 },
-    { id: "us500", sym: "US 500", name: "US 500 Index", cat: "indices", badge: "sym-index", mark: "500", price: 6512.3, dp: 1, chg: 0.42, spread: 0.5 },
-    { id: "ustec", sym: "US Tech 100", name: "US Tech 100 Index", cat: "indices", badge: "sym-index", mark: "100", price: 23410.5, dp: 1, chg: 0.67, spread: 1.0 },
-    { id: "ger40", sym: "Germany 40", name: "Germany 40 Index", cat: "indices", badge: "sym-index", mark: "40", price: 23980.2, dp: 1, chg: -0.22, spread: 1.0 },
-    { id: "aapl", sym: "Apple", name: "Apple Inc. CFD", cat: "stocks", badge: "sym-stock", mark: "AA", price: 228.4, dp: 2, chg: 0.55, spread: 0.06 },
-    { id: "tsla", sym: "Tesla", name: "Tesla Inc. CFD", cat: "stocks", badge: "sym-stock", mark: "TS", price: 252.1, dp: 2, chg: -1.34, spread: 0.1 },
-    { id: "nvda", sym: "Nvidia", name: "NVIDIA Corp. CFD", cat: "stocks", badge: "sym-stock", mark: "NV", price: 178.3, dp: 2, chg: 1.48, spread: 0.06 },
+    { id: "eurusd", sym: "EUR/USD", name: "Euro / US Dollar", cat: "forex", badge: "sym-fx", mark: "€$", dp: 4 },
+    { id: "gbpusd", sym: "GBP/USD", name: "British Pound / US Dollar", cat: "forex", badge: "sym-fx", mark: "£$", dp: 4 },
+    { id: "usdjpy", sym: "USD/JPY", name: "US Dollar / Japanese Yen", cat: "forex", badge: "sym-fx", mark: "$¥", dp: 2 },
+    { id: "audusd", sym: "AUD/USD", name: "Australian Dollar / US Dollar", cat: "forex", badge: "sym-fx", mark: "A$", dp: 4 },
+    { id: "usdchf", sym: "USD/CHF", name: "US Dollar / Swiss Franc", cat: "forex", badge: "sym-fx", mark: "$₣", dp: 4 },
+    { id: "xauusd", sym: "XAU/USD", name: "Gold / US Dollar", cat: "metals", badge: "sym-gold", mark: "Au", dp: 2 },
+    { id: "xagusd", sym: "XAG/USD", name: "Silver / US Dollar", cat: "metals", badge: "sym-silver", mark: "Ag", dp: 2 },
+    { id: "wti", sym: "WTI", name: "US Crude Oil", cat: "energy", badge: "sym-energy", mark: "OIL", dp: 2 },
+    { id: "brent", sym: "Brent", name: "UK Brent Oil", cat: "energy", badge: "sym-energy", mark: "BR", dp: 2 },
+    { id: "us500", sym: "US 500", name: "US 500 Index", cat: "indices", badge: "sym-index", mark: "500", dp: 1 },
+    { id: "ustec", sym: "US Tech 100", name: "US Tech 100 Index", cat: "indices", badge: "sym-index", mark: "100", dp: 1 },
+    { id: "ger40", sym: "Germany 40", name: "Germany 40 Index", cat: "indices", badge: "sym-index", mark: "40", dp: 1 },
+    { id: "aapl", sym: "Apple", name: "Apple Inc. CFD", cat: "stocks", badge: "sym-stock", mark: "AA", dp: 2 },
+    { id: "tsla", sym: "Tesla", name: "Tesla Inc. CFD", cat: "stocks", badge: "sym-stock", mark: "TS", dp: 2 },
+    { id: "nvda", sym: "Nvidia", name: "NVIDIA Corp. CFD", cat: "stocks", badge: "sym-stock", mark: "NV", dp: 2 },
   ];
   const byId = Object.fromEntries(INSTRUMENTS.map((i) => [i.id, i]));
-  const FEATURED = ["eurusd", "xauusd", "us500", "wti"];
+  const FEATURED = ["eurusd", "xauusd", "us500", "wti"]; // preferred cards; unavailable ones are swapped for available instruments
 
   /* ---------- Helpers ---------- */
   function rng(seed) { // mulberry32
@@ -49,7 +53,7 @@
   }
   function fmtChg(v) { return (v >= 0 ? "+" : "") + v.toFixed(2) + "%"; }
 
-  /** Random-walk close series that ends at `end`. */
+  /** Random-walk series, used only for the decorative device mockups and the About card. */
   function series(end, n, vol, seed) {
     const r = rng(seed);
     const out = [end];
@@ -208,31 +212,127 @@
     }
   }
 
+  /* =========================================================
+     Market prices (Twelve Data via /api/quotes)
+     ========================================================= */
+  const QUOTES_URL = "/api/quotes";
+  const POLL_MS = 30000; // reads the server cache; does not use Twelve Data credits
+  let Q = {};            // id -> quote from the server
+  let meta = null;       // the rest of the /api/quotes response
+  let loadFailed = false;
+  let tickerKey = "";
+  let moverKey = "";
+
+  const REASONS = {
+    not_in_plan: "Not included in the current Twelve Data plan",
+    symbol_not_found: "Symbol not found at Twelve Data",
+    no_feed: "Twelve Data has no feed for this index",
+    provider_error: "The data provider did not return a price",
+  };
+
+  function q(id) { return Q[id] || null; }
+  function hasPrice(x) { return !!(x && x.status === "ok" && x.price != null); }
+  function dir(x) { return x && x.percentChange != null && x.percentChange < 0 ? "down" : "up"; }
+  function chgText(x) { return x && x.percentChange != null ? fmtChg(x.percentChange) : "—"; }
+  function priceText(i, v) { return v == null ? "—" : fmt(v, i.dp); }
+  function mins(sec) { const m = Math.round(sec / 60); return m >= 60 && m % 60 === 0 ? (m / 60) + " h" : m + " min"; }
+  function timeText(iso) {
+    if (!iso) return "";
+    const d = new Date(iso);
+    return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", timeZoneName: "short" });
+  }
+
+  /** Short state shown next to the symbol: Closed, Delayed, Unavailable... */
+  function stateTag(x) {
+    if (!x) return { text: "Loading", title: "Waiting for prices" };
+    if (x.status === "unavailable") return { text: "Unavailable", title: REASONS[x.reason] || "Not available" };
+    if (x.status === "error" || (x.status === "pending" && !hasPrice(x))) return { text: x.status === "pending" ? "Loading" : "Unavailable", title: REASONS[x.reason] || "Waiting for the first update" };
+    if (x.stale) return { text: "Not updated", title: "The latest update failed; showing the last price received" };
+    if (x.feed === "closed") return { text: "Closed", title: "Market closed: showing the last price" };
+    if (x.feed === "delayed") return { text: "Delayed " + (x.delayMinutes ? "~" + x.delayMinutes + " min" : ""), title: "Price is delayed at source" };
+    return null;
+  }
+
+  /** Points for the small "Today" chart: previous close, then prices the server recorded. */
+  function sparkValues(x) {
+    const pts = (x.history || []).map((p) => p[1]);
+    const vals = x.previousClose != null ? [x.previousClose].concat(pts) : pts;
+    if (vals.length === 1) vals.push(vals[0]);
+    if (vals.length === 0 && x.price != null) return [x.price, x.price];
+    if (vals[vals.length - 1] !== x.price && x.price != null) vals.push(x.price);
+    return vals;
+  }
+
   /* ---------- Ticker tape ---------- */
   function renderTicker() {
     const track = document.getElementById("tickerTrack");
     if (!track) return;
-    const items = INSTRUMENTS.map((i) =>
-      `<span class="tick" data-tick="${i.id}"><b>${i.sym}</b><span class="p">${fmt(i.price, i.dp)}</span><span class="${i.chg >= 0 ? "up" : "down"}">${fmtChg(i.chg)}</span></span>`
-    ).join("");
-    track.innerHTML = items + items; // duplicated for a seamless loop
+    const live = INSTRUMENTS.filter((i) => hasPrice(q(i.id)));
+    const list = live;
+    if (!list.length) {
+      tickerKey = "";
+      track.innerHTML = "";
+      return;
+    }
+    const key = list.map((i) => i.id).join(",");
+    if (key !== tickerKey) {
+      // rebuild only when the set of instruments changes, so the scroll animation is not restarted
+      tickerKey = key;
+      const items = list.map((i) => `<span class="tick" data-tick="${i.id}"><b>${i.sym}</b><span class="p">—</span><span>—</span></span>`).join("");
+      track.innerHTML = items + items; // duplicated for a seamless loop
+    }
+    list.forEach((i) => {
+      const x = q(i.id);
+      track.querySelectorAll(`[data-tick="${i.id}"]`).forEach((t) => {
+        t.querySelector(".p").textContent = hasPrice(x) ? fmt(x.price, i.dp) : "—";
+        const c = t.querySelector(".p + span");
+        c.textContent = hasPrice(x) ? chgText(x) : "—";
+        c.className = hasPrice(x) && x.percentChange != null ? dir(x) : "";
+      });
+    });
   }
 
   /* ---------- Featured movers ---------- */
+  function featuredIds() {
+    const ok = (id) => hasPrice(q(id));
+    const pick = FEATURED.filter(ok);
+    INSTRUMENTS.forEach((i) => { if (pick.length < 4 && !pick.includes(i.id) && ok(i.id)) pick.push(i.id); });
+    return pick;
+  }
+
   function renderMovers() {
     const grid = document.getElementById("moverGrid");
     if (!grid) return;
-    grid.innerHTML = FEATURED.map((id) => {
-      const i = byId[id];
-      const vals = series(i.price, 40, 0.004, seedOf(id + "spark"));
-      return `<article class="mover" data-mover="${id}">
-        <span class="sym-badge ${i.badge}">${i.mark}</span>
-        <span class="mover-name">${i.sym}</span>
-        <span class="mover-sub">${i.name}</span>
-        <div class="mover-spark">${sparkSVG(vals, 200, 54, i.chg >= 0)}</div>
-        <div class="mover-foot"><span class="mover-price">${fmt(i.price, i.dp)}</span><span class="chg ${i.chg >= 0 ? "up" : "down"}">${fmtChg(i.chg)}</span></div>
-      </article>`;
-    }).join("");
+    const ids = featuredIds();
+    const key = ids.join(",");
+    if (key !== moverKey) {
+      moverKey = key;
+      grid.innerHTML = ids.length ? ids.map((id) => {
+        const i = byId[id];
+        return `<article class="mover" data-mover="${id}">
+          <span class="sym-badge ${i.badge}">${i.mark}</span>
+          <span class="mover-name">${i.sym}</span>
+          <span class="mover-sub">${i.name}</span>
+          <div class="mover-spark"></div>
+          <div class="mover-foot"><span class="mover-price">—</span><span class="chg">—</span></div>
+        </article>`;
+      }).join("") : `<p class="market-empty">${loadFailed ? "Could not load available prices." : meta ? "No featured instruments currently have available prices." : "Loading available prices…"}</p>`;
+    }
+    ids.forEach((id) => {
+      const i = byId[id], x = q(id), el = grid.querySelector(`[data-mover="${id}"]`);
+      if (!el) return;
+      const priceEl = el.querySelector(".mover-price");
+      const before = priceEl.dataset.v ? Number(priceEl.dataset.v) : null;
+      priceEl.textContent = hasPrice(x) ? fmt(x.price, i.dp) : "—";
+      priceEl.dataset.v = hasPrice(x) ? x.price : "";
+      const c = el.querySelector(".mover-foot .chg");
+      const tag = stateTag(x);
+      c.textContent = hasPrice(x) ? chgText(x) : (tag ? tag.text : "—");
+      c.className = "chg " + (hasPrice(x) && x.percentChange != null ? dir(x) : "");
+      c.title = tag ? tag.title : "";
+      el.querySelector(".mover-spark").innerHTML = hasPrice(x) ? sparkSVG(sparkValues(x), 200, 54, dir(x) === "up") : "";
+      if (before != null && hasPrice(x) && x.price !== before) flash(priceEl, x.price > before);
+    });
   }
 
   /* ---------- Market table ---------- */
@@ -240,18 +340,43 @@
   function renderTable() {
     const body = document.getElementById("marketBody");
     if (!body) return;
-    const rows = INSTRUMENTS.filter((i) => currentFilter === "all" || i.cat === currentFilter);
+    const bidAsk = !!(meta && meta.bidAskAvailable);
+    // Twelve Data's quote feed has no bid/ask: the two price columns then show last price and previous close
+    const thBid = document.querySelector('[data-col="bid"]'), thAsk = document.querySelector('[data-col="ask"]');
+    if (thBid) thBid.textContent = bidAsk ? "Sell" : "Price";
+    if (thAsk) thAsk.textContent = bidAsk ? "Buy" : "Prev. close";
+
+    const previous = {};
+    body.querySelectorAll("[data-row]").forEach((r) => { previous[r.dataset.row] = r.dataset.v ? Number(r.dataset.v) : null; });
+
+    const rows = INSTRUMENTS.filter((i) => (currentFilter === "all" || i.cat === currentFilter) && hasPrice(q(i.id)));
+    if (!rows.length) {
+      body.innerHTML = `<tr><td class="market-empty" colspan="5">${loadFailed ? "Could not load available prices." : meta ? "No instruments in this category currently have available prices." : "Loading available prices…"}</td></tr>`;
+      return;
+    }
     body.innerHTML = rows.map((i) => {
-      const bid = i.price - i.spread / 2, ask = i.price + i.spread / 2;
-      const vals = series(i.price, 30, 0.003, seedOf(i.id + "row"));
-      return `<tr data-row="${i.id}">
-        <td><div class="inst"><span class="sym-badge ${i.badge}">${i.mark}</span><div><b>${i.sym}</b><span>${i.name}</span></div></div></td>
-        <td class="num"><span class="price-cell" data-bid>${fmt(bid, i.dp)}</span></td>
-        <td class="num"><span class="price-cell" data-ask>${fmt(ask, i.dp)}</span></td>
-        <td class="num"><span class="pill-chg ${i.chg >= 0 ? "up" : "down"}" data-chg>${fmtChg(i.chg)}</span></td>
-        <td class="hide-sm spark-cell">${sparkSVG(vals, 110, 32, i.chg >= 0)}</td>
+      const x = q(i.id), ok = hasPrice(x), tag = stateTag(x);
+      const c1 = ok ? (bidAsk && x.bid != null ? x.bid : x.price) : null;
+      const c2 = ok ? (bidAsk && x.ask != null ? x.ask : x.previousClose) : null;
+      const pill = ok && x.percentChange != null
+        ? `<span class="pill-chg ${dir(x)}" data-chg>${chgText(x)}</span>`
+        : `<span class="pill-chg na" data-chg>—</span>`;
+      return `<tr data-row="${i.id}" data-v="${ok ? x.price : ""}">
+        <td><div class="inst"><span class="sym-badge ${i.badge}">${i.mark}</span><div><b>${i.sym}${tag ? ` <small class="mkt-tag" title="${tag.title}">${tag.text}</small>` : ""}</b><span>${i.name}</span></div></div></td>
+        <td class="num"><span class="price-cell" data-bid>${priceText(i, c1)}</span></td>
+        <td class="num"><span class="price-cell" data-ask>${priceText(i, c2)}</span></td>
+        <td class="num">${pill}</td>
+        <td class="hide-sm spark-cell">${ok ? sparkSVG(sparkValues(x), 110, 32, dir(x) === "up") : ""}</td>
       </tr>`;
     }).join("");
+
+    if (!reduceMotion) rows.forEach((i) => {
+      const x = q(i.id), before = previous[i.id];
+      if (before != null && hasPrice(x) && x.price !== before) {
+        const row = body.querySelector(`[data-row="${i.id}"]`);
+        flash(row.querySelector("[data-bid]"), x.price > before);
+      }
+    });
   }
 
   function setFilter(filter) {
@@ -270,46 +395,105 @@
     document.querySelectorAll("[data-goto]").forEach((b) => b.addEventListener("click", () => setFilter(b.dataset.goto)));
   }
 
-  /* ---------- Simulated price movement (sample only) ---------- */
   function flash(el, up) {
-    if (!el) return;
+    if (!el || reduceMotion) return;
     el.classList.remove("flash-up", "flash-down");
     void el.offsetWidth;
     el.classList.add(up ? "flash-up" : "flash-down");
     setTimeout(() => el.classList.remove("flash-up", "flash-down"), 700);
   }
 
-  function tickPrices() {
-    const r = Math.random;
-    for (let k = 0; k < 4; k++) {
-      const i = INSTRUMENTS[Math.floor(r() * INSTRUMENTS.length)];
-      const move = (r() - 0.5) * 0.0012;
-      const before = i.price;
-      i.price = i.price * (1 + move);
-      i.chg = +(i.chg + move * 100).toFixed(2);
-      const up = i.price >= before;
+  /* ---------- Status badge and source note ---------- */
+  function namesWhere(test) { return INSTRUMENTS.filter((i) => test(q(i.id))).map((i) => i.sym); }
+  function listText(names) { return names.length <= 2 ? names.join(" and ") : names.slice(0, -1).join(", ") + " and " + names[names.length - 1]; }
 
-      const row = document.querySelector(`[data-row="${i.id}"]`);
-      if (row) {
-        const bid = row.querySelector("[data-bid]"), ask = row.querySelector("[data-ask]"), chg = row.querySelector("[data-chg]");
-        bid.textContent = fmt(i.price - i.spread / 2, i.dp);
-        ask.textContent = fmt(i.price + i.spread / 2, i.dp);
-        chg.textContent = fmtChg(i.chg);
-        chg.className = "pill-chg " + (i.chg >= 0 ? "up" : "down");
-        flash(bid, up); flash(ask, up);
-      }
-      document.querySelectorAll(`[data-tick="${i.id}"]`).forEach((t) => {
-        t.querySelector(".p").textContent = fmt(i.price, i.dp);
-        const c = t.querySelector(".p + span");
-        c.textContent = fmtChg(i.chg); c.className = i.chg >= 0 ? "up" : "down";
-      });
-      const mv = document.querySelector(`[data-mover="${i.id}"]`);
-      if (mv) {
-        mv.querySelector(".mover-price").textContent = fmt(i.price, i.dp);
-        const c = mv.querySelector(".mover-foot .chg");
-        c.textContent = fmtChg(i.chg); c.className = "chg " + (i.chg >= 0 ? "up" : "down");
-      }
+  function renderStatus() {
+    const badge = document.getElementById("marketStatus");
+    const note = document.getElementById("marketNote");
+    if (!badge && !note) return;
+
+    let text, mode;
+    const anyPrice = INSTRUMENTS.some((i) => hasPrice(q(i.id)));
+    const realtime = namesWhere((x) => hasPrice(x) && x.feed === "realtime" && !x.stale);
+    const delayed = namesWhere((x) => hasPrice(x) && x.feed === "delayed");
+    const every = meta && meta.refresh ? mins(meta.refresh.openSeconds) : null;
+
+    if (!meta && loadFailed) { text = "Prices unavailable"; mode = "off"; }
+    else if (!meta || meta.status === "warming_up" && !anyPrice) { text = "Loading prices…"; mode = "wait"; }
+    else if (!anyPrice) { text = "Prices unavailable"; mode = "off"; }
+    else if (loadFailed) { text = "Connection lost: last prices shown"; mode = "off"; }
+    else if (meta.status === "daily_limit" || meta.status === "rate_limited") { text = "Updates paused: last prices shown"; mode = "off"; }
+    else if (realtime.length && delayed.length) { text = "Real-time and delayed prices"; mode = "live"; }
+    else if (realtime.length) { text = "Real-time source · refreshed every " + every; mode = "live"; }
+    else if (delayed.length) { text = "Delayed prices"; mode = "delayed"; }
+    else { text = "Markets closed: last prices shown"; mode = "closed"; }
+
+    if (badge) {
+      badge.querySelector("[data-status-text]").textContent = text;
+      badge.dataset.mode = mode;
     }
+    if (!note) return;
+
+    if (!meta) {
+      note.textContent = loadFailed ? "Prices could not be loaded. They appear when the site runs on its server with a Twelve Data key." : "";
+      return;
+    }
+    const parts = [];
+    parts.push("Source: Twelve Data." + (meta.lastSuccessAt ? " Last update " + timeText(meta.lastSuccessAt) + "." : ""));
+    if (realtime.length) parts.push(`Real-time at source: ${listText(realtime)}. This page refreshes them every ${every}` + (meta.refresh.closedSeconds > meta.refresh.openSeconds ? ` (closed markets every ${mins(meta.refresh.closedSeconds)})` : "") + ".");
+    if (delayed.length) parts.push(`Delayed at source: ${listText(delayed)}.`);
+    const closed = namesWhere((x) => hasPrice(x) && x.feed === "closed");
+    if (closed.length) parts.push(`Market closed: ${listText(closed)} (last price shown).`);
+    if (!meta.bidAskAvailable && anyPrice) parts.push("Twelve Data's quote feed has no bid/ask, so the table shows the latest price and the previous close.");
+    const why = (reason) => namesWhere((x) => x && x.status === "unavailable" && x.reason === reason);
+    const notInPlan = why("not_in_plan"), noFeed = why("no_feed"), notFound = why("symbol_not_found");
+    const failed = namesWhere((x) => x && x.status === "error" && !hasPrice(x));
+    if (notInPlan.length) parts.push(`Not included in the current Twelve Data plan: ${listText(notInPlan)}.`);
+    if (noFeed.length) parts.push(`No Twelve Data feed: ${listText(noFeed)}.`);
+    if (notFound.length) parts.push(`Symbol not recognised by Twelve Data: ${listText(notFound)}.`);
+    if (failed.length) parts.push(`Could not be loaded right now: ${listText(failed)}.`);
+    if (meta.message && meta.status !== "ok") parts.push(meta.message);
+    parts.push("Prices are indicative, not tradable quotes.");
+    note.textContent = parts.join(" ");
+  }
+
+  function renderAll() {
+    renderTicker();
+    renderMovers();
+    renderTable();
+    renderStatus();
+  }
+
+  /* ---------- Loading /api/quotes ---------- */
+  let pollTimer = null;
+  async function loadQuotes() {
+    try {
+      const res = await fetch(QUOTES_URL, { headers: { Accept: "application/json" }, cache: "no-cache" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      meta = data;
+      Q = Object.fromEntries((data.instruments || []).map((x) => [x.id, x]));
+      loadFailed = false;
+    } catch (e) {
+      loadFailed = true; // keep the last prices on screen
+    }
+    renderAll();
+    // poll faster while the server is still collecting its first prices
+    const wait = meta && meta.status === "warming_up" ? 10000 : POLL_MS;
+    clearTimeout(pollTimer);
+    if (!document.hidden) pollTimer = setTimeout(loadQuotes, wait);
+  }
+
+  function initQuotes() {
+    if (!document.getElementById("marketBody") && !document.getElementById("tickerTrack")) return;
+    // opened as a local file: there is no server to ask, so show the "unavailable" state
+    if (location.protocol === "file:") { loadFailed = true; renderAll(); return; }
+    loadQuotes();
+    // stop polling in background tabs, refresh when the visitor comes back
+    document.addEventListener("visibilitychange", () => {
+      clearTimeout(pollTimer);
+      if (!document.hidden) loadQuotes();
+    });
   }
 
   /* ---------- About sparkline + platform mockups ---------- */
@@ -430,9 +614,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     const year = document.getElementById("year");
     if (year) year.textContent = new Date().getFullYear();
-    renderTicker();
-    renderMovers();
-    renderTable();
+    renderAll();
     initMarketTabs();
     initNav();
     initDecor();
@@ -441,6 +623,6 @@
     initBlogFilter();
     initShare();
     icons();
-    if (!reduceMotion && document.getElementById("marketBody")) setInterval(tickPrices, 2200); // homepage only
+    initQuotes(); // homepage only: loads prices from /api/quotes
   });
 })();

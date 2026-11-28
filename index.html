@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <meta name="theme-color" content="#0A1F1A" />
-  <link rel="stylesheet" href="style.css?v=9" />
+  <link rel="stylesheet" href="style.css?v=11" />
 </head>
 <body>
   <!-- Shared SVG gradient (used by the video play buttons) -->
@@ -94,7 +94,7 @@
       </div>
 
       <!-- Ticker tape -->
-      <div class="ticker" aria-label="Sample market ticker">
+      <div class="ticker" aria-label="Market prices from Twelve Data">
         <div class="ticker-track" id="tickerTrack"></div>
       </div>
     </section>
@@ -105,9 +105,9 @@
         <div class="section-head split">
           <div>
             <h2>Market overview</h2>
-            <p class="section-sub">Prices across forex, metals, energies, indices and stock CFDs. Values shown here are sample data for the design prototype and update with simulated movement.</p>
+            <p class="section-sub">Prices across forex, metals, energies, indices and stock CFDs, supplied by Twelve Data. Prices are indicative and are not tradable quotes.</p>
           </div>
-          <span class="badge-sample"><span class="dot-live" aria-hidden="true"></span> Sample data, not live prices</span>
+          <span class="badge-sample" id="marketStatus" role="status"><span class="dot-live" aria-hidden="true"></span> <span data-status-text>Loading prices…</span></span>
         </div>
 
         <!-- Featured instrument cards -->
@@ -128,8 +128,8 @@
               <thead>
                 <tr>
                   <th scope="col">Instrument</th>
-                  <th scope="col" class="num">Sell</th>
-                  <th scope="col" class="num">Buy</th>
+                  <th scope="col" class="num" data-col="bid">Sell</th>
+                  <th scope="col" class="num" data-col="ask">Buy</th>
                   <th scope="col" class="num">Change</th>
                   <th scope="col" class="hide-sm">Today</th>
                 </tr>
@@ -138,6 +138,7 @@
             </table>
           </div>
         </div>
+        <p class="market-note" id="marketNote" aria-live="polite"></p>
       </div>
     </section>
 
@@ -819,6 +820,6 @@
   </div>
 
   <script src="https://unpkg.com/lucide@1.50.0/dist/umd/lucide.min.js"></script>
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=11"></script>
 </body>
 </html>

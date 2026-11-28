@@ -301,6 +301,15 @@ p { margin: 0; }
 .pill-chg { display: inline-block; padding: 4px 10px; border-radius: var(--r-pill); font-weight: 600; font-size: 0.85rem; }
 .pill-chg.up { background: rgba(39, 199, 122, .12); }
 .pill-chg.down { background: rgba(240, 82, 91, .1); }
+.pill-chg.na { color: var(--muted); background: rgba(14, 51, 40, .05); }
+/* Live-data states (Twelve Data) */
+.mkt-tag { display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: var(--r-pill); font-size: 0.68rem; font-weight: 600; letter-spacing: .02em; vertical-align: 1px; color: var(--muted); background: rgba(14, 51, 40, .06); white-space: nowrap; }
+.market-note { margin-top: 14px; font-size: 0.82rem; line-height: 1.6; color: var(--muted); max-width: 110ch; }
+.market-note:empty { display: none; }
+.market-empty { grid-column: 1 / -1; padding: 18px 20px !important; color: var(--muted); text-align: center; font-size: 0.9rem; }
+.badge-sample[data-mode="live"] .dot-live { background: var(--up); box-shadow: 0 0 0 4px rgba(39, 199, 122, .18); }
+.badge-sample[data-mode="delayed"] .dot-live { background: var(--gold-deep); }
+.badge-sample[data-mode="off"] .dot-live, .badge-sample[data-mode="closed"] .dot-live { background: #a9b7b0; box-shadow: none; animation: none; }
 .spark-cell svg { width: 110px; height: 32px; }
 
 /* =========================================================

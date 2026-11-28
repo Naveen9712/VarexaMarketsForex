@@ -1,0 +1,9 @@
+/* =========================================================
+   Education section (education/index.html + lesson pages)
+   Page-only styles. Shared blog styles (cards, filters,
+   article layout) come from ../style.css.
+   ========================================================= */
+/* Lesson covers are illustrations, so keep them uncropped */
+.page-education .post-media img { object-fit: cover; object-position: center; }
+.page-education .post-cat { background: rgba(10, 31, 26, .82); color: var(--gold-light); border: 1px solid rgba(227, 192, 120, .35); }
+.page-education .article-hero .post-cat-static { background: var(--gold-gradient); color: var(--gold-ink); border: 0; }
